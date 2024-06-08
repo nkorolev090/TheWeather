@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.theweather.databinding.FragmentHomeBinding
+import com.example.theweather.view_models.home.HomeViewModel
 
 class HomeFragment : Fragment() {
 
