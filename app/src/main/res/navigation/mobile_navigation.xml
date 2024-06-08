@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.theweather.ui.clothers.ClothesFragment"
+        android:name="com.example.theweather.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_clothes" />
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.theweather.ui.recommendations.RecommendationsFragment"
+        android:name="com.example.theweather.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_recommendations" />
+        tools:layout="@layout/fragment_notifications" />
 </navigation>
