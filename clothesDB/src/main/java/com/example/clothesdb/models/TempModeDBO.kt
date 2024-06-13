@@ -1,9 +1,9 @@
 package com.example.clothesdb.models
 
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.clothesdb.models.enums.MainEnumDBO
 
 @Entity
 data class TempModeDBO(

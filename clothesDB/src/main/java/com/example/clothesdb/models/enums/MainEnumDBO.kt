@@ -1,4 +1,4 @@
-package com.example.clothesdb.models
+package com.example.clothesdb.models.enums
 
 import androidx.room.ColumnInfo
 

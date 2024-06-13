@@ -11,6 +11,9 @@ data class Response (
     @SerialName("main")
     val main: Main,
 
+    @SerialName("wind")
+    val wind: Wind,
+
     @SerialName("name")
     val name: String,
 
