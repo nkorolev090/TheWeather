@@ -14,24 +14,21 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class WeatherRepository(
+
+class WeatherRepository @Inject constructor(
     private val database: WeatherDatabase,
     private val api: WeatherApi,
 ) {
 
     fun getAll(mergeStrategy: MergeStrategy<RequestResult<Weather>> = DefaultRequestResponseMergeStrategy()): Flow<RequestResult<Weather>> {
 
-        val cachedWeather: Flow<RequestResult<Weather>> =
-            getAllFromDatabase()
-                .map { result ->
-                    result.map{ it.toWeather() }
-                }
+        val cachedWeather: Flow<RequestResult<Weather>> = getAllFromDatabase()
+
 
         val remoteWeather = getAllFromServer()
-            .map { result ->
-                result.map{ it.toWeather() }
-            }
+
 
         return cachedWeather.combine(remoteWeather, mergeStrategy::merge)
             .flatMapConcat { result ->
@@ -45,11 +42,11 @@ class WeatherRepository(
             }
     }
 
-    private fun getAllFromServer(): Flow<RequestResult<ResponseDTO>> {
+    private fun getAllFromServer(): Flow<RequestResult<Weather>> {
         val apiRequest = flow { emit(api.weather(city = ""))}
             .onEach { result ->
                 if(result.isSuccess){
-                    saveNetResponseToCache(checkNotNull(result.getOrThrow()))
+                    saveNetResponseToCache(result.getOrThrow())
                 }
             }
             .map { it.toRequestResult() }
@@ -57,6 +54,9 @@ class WeatherRepository(
         val start = flowOf<RequestResult<ResponseDTO>>(RequestResult.InProgress())
 
         return merge(apiRequest, start)
+            .map { result ->
+                result.map{ it.toWeather() }
+            }
     }
 
     private suspend fun saveNetResponseToCache(data: ResponseDTO) {
@@ -65,11 +65,18 @@ class WeatherRepository(
         database.weatherDao.insert(dbos)
     }
 
-    private fun getAllFromDatabase(): Flow<RequestResult<WeatherDBO>> {
+    private fun getAllFromDatabase(): Flow<RequestResult<Weather>> {
         val dbRequest =  database.weatherDao::getAll
             .asFlow()
             .map { RequestResult.Success(it) }
         val start = flowOf<RequestResult<WeatherDBO>>(RequestResult.InProgress())
         return merge(start, dbRequest)
+            .map { result ->
+                result.map{ it.toWeather() }
+            }
+    }
+
+    fun fetchLatest(): Flow<RequestResult<Weather>>{
+        return getAllFromServer()
     }
 }
