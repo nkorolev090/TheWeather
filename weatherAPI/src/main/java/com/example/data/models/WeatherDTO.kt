@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Weather (
+data class WeatherDTO (
     @SerialName("main")
-    val main: MainEnum,
+    val main: MainEnumDTO,
 )

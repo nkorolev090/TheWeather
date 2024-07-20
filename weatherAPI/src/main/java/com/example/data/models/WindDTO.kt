@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Wind (
+data class WindDTO (
     @SerialName("speed")
     val speed: Double,
 

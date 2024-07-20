@@ -1,6 +1,6 @@
 package com.example.data
 
-import com.example.data.models.Response
+import com.example.data.models.ResponseDTO
 import com.example.data.utils.WeatherApiKeyInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
@@ -18,7 +18,7 @@ interface WeatherApi {
     fun weather(
         @Query("units") units: String? = "metric",
         @Query("q") city: String,
-    ): Result<Response>
+    ): Result<ResponseDTO>
 }
 
 fun WeatherApi(

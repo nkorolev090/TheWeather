@@ -4,15 +4,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Response (
+data class ResponseDTO (
     @SerialName("weather")
-    val weather: Weather,
+    val weather: WeatherDTO,
 
     @SerialName("main")
-    val main: Main,
+    val main: MainDTO,
 
     @SerialName("wind")
-    val wind: Wind,
+    val wind: WindDTO,
 
     @SerialName("name")
     val name: String,

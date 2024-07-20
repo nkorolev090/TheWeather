@@ -22,5 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "TheWeather"
 include(":app")
 include(":weatherAPI")
-include(":clothesDB")
+include(":dataBase")
 include(":weatherData")

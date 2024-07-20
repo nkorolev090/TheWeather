@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Main (
+data class MainDTO (
     @SerialName("temp")
     val temp: Double,
 

@@ -1,4 +1,4 @@
-package com.example.weatherdata.models
+package com.example.weatherdata.weather.models
 
 import androidx.annotation.IntRange
 
