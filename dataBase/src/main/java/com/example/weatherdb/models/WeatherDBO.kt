@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class WeatherDBO (
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo("temperature") val temperature: Double,
-    @ColumnInfo("humidity") val humidity: Double,
+    @ColumnInfo("humidity") val humidity: Int,
     @ColumnInfo("main") val main: String,
     @ColumnInfo("pressure") val pressure: Int,
     @ColumnInfo("feelsLike") val feelsLike: Double,

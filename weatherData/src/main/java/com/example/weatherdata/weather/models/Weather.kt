@@ -4,7 +4,7 @@ import androidx.annotation.IntRange
 
 data class Weather (
     val temperature: Double,
-    val humidity: Double,
+    val humidity: Int,
     val main: MainEnum,
     val pressure: Int,
     val feelsLike: Double,

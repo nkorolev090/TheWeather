@@ -19,4 +19,7 @@ data class ResponseDTO (
 
     @SerialName("cod")
     val cod: Int,
+
+    @SerialName("id")
+    val id: Long,
 )

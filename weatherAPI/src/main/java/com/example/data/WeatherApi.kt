@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.example.data
 
 import com.example.data.models.ResponseDTO
@@ -14,8 +16,8 @@ import retrofit2.http.Query
 
 interface WeatherApi {
 
-    @GET("/weather")
-    fun weather(
+    @GET("weather")
+    suspend fun weather(
         @Query("units") units: String? = "metric",
         @Query("q") city: String,
     ): Result<ResponseDTO>

@@ -18,8 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "WEATHER_API_KEY", "\"\"")
-        buildConfigField("String", "WEATHER_API_BASE_URL", "\"\"")
+        buildConfigField("String", "WEATHER_API_KEY", "\"e9c0a8d29a2be036480737aac624d413\"")
+        buildConfigField("String", "WEATHER_API_BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
     }
 
     buildTypes {
@@ -45,7 +45,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -60,7 +59,11 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation(libs.kotlinx.serialization.json)
+
     implementation(project(":weatherAPI"))
     implementation(project(":weatherData"))
     implementation(project(":dataBase"))
+    implementation(project(":weatherCommon"))
 }

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dataBase" />
             <option value="$PROJECT_DIR$/weatherAPI" />
+            <option value="$PROJECT_DIR$/weatherCommon" />
             <option value="$PROJECT_DIR$/weatherData" />
           </set>
         </option>
