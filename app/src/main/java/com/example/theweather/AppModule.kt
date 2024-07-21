@@ -36,7 +36,7 @@ object AppModule {
         return WeatherApi(
             baseUrl = BuildConfig.WEATHER_API_BASE_URL,
             apiKey = BuildConfig.WEATHER_API_KEY,
-            okHttpClient = okHttpClient
+            //okHttpClient = okHttpClient
         )
     }
     @Provides

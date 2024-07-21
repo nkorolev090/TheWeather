@@ -2,11 +2,13 @@ package com.example.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class ResponseDTO (
+
     @SerialName("weather")
-    val weather: WeatherDTO,
+    val weather: Array<WeatherDTO>,
 
     @SerialName("main")
     val main: MainDTO,

@@ -27,7 +27,7 @@ internal fun ResponseDTO.toWeatherDBO() : WeatherDBO{
         id = id,
         temperature = main.temp,
         humidity = main.humidity,
-        main = weather.main,
+        main = weather.first().main,
         pressure = main.pressure,
         feelsLike = main.feelsLike,
         windDeg = wind.deg,
@@ -38,7 +38,7 @@ internal fun ResponseDTO.toWeather() : Weather{
     return Weather(
         temperature = main.temp,
         humidity = main.humidity,
-        main = weather.main.toMainEnum(),
+        main = weather.first().main.toMainEnum(),
         pressure = main.pressure,
         feelsLike = main.feelsLike,
         windDeg = wind.deg,

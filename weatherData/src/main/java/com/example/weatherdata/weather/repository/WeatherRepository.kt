@@ -1,7 +1,9 @@
 package com.example.weatherdata.weather.repository
 
 import android.util.Log
+import com.example.data.RequestResultAPI
 import com.example.data.WeatherApi
+import com.example.data.handleApi
 import com.example.data.models.ResponseDTO
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdb.WeatherDatabase
@@ -26,6 +28,17 @@ class WeatherRepository @Inject constructor(
     private val api: WeatherApi,
 ) {
 
+    suspend fun getAllWeather(): RequestResult<Weather>{
+        val response = handleApi { api.weatherResponse(city = "Ivanovo") }
+
+
+        return when(response){
+            is RequestResultAPI.Success->RequestResult.Success(response.data.toWeather())
+            is RequestResultAPI.Error->RequestResult.Error()
+            is RequestResultAPI.InProgress->RequestResult.InProgress()
+            is RequestResultAPI.Exception->RequestResult.Error(error = response.throwable)
+        }
+    }
     fun getAll(mergeStrategy: MergeStrategy<RequestResult<Weather>> = DefaultRequestResponseMergeStrategy()): Flow<RequestResult<Weather>> {
 
         val cachedWeather: Flow<RequestResult<Weather>> = getAllFromDatabase()
@@ -46,7 +59,8 @@ class WeatherRepository @Inject constructor(
 
     private fun getAllFromServer(): Flow<RequestResult<Weather>> {
         Log.d("Repo", "getAllFromServer()");
-        val apiRequest = flow { emit(api.weather(city = "Ivanovo"))}//перенести потом
+
+        val apiRequest = flow { emit(api.weatherResult(city = "Ivanovo"))}//перенести потом
             .onEach { result ->
                 if(result.isSuccess){
                     Log.d("Repos", "Success = ${result.getOrNull()}")
