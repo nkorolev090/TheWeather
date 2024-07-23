@@ -28,55 +28,16 @@ class WeatherRepository @Inject constructor(
     private val api: WeatherApi,
 ) {
 
-    suspend fun getAllWeather(): RequestResult<Weather>{
-        val response = handleApi { api.weatherResponse(city = "Ivanovo") }
+    suspend fun getAllWeather(city: String): RequestResult<Weather>{
+        val response = handleApi { api.weatherResponse(city = city) }
 
 
         return when(response){
             is RequestResultAPI.Success->RequestResult.Success(response.data.toWeather())
-            is RequestResultAPI.Error->RequestResult.Error()
             is RequestResultAPI.InProgress->RequestResult.InProgress()
+            is RequestResultAPI.Error->RequestResult.Error(code = response.code, message = response.message)
             is RequestResultAPI.Exception->RequestResult.Error(error = response.throwable)
         }
-    }
-    fun getAll(mergeStrategy: MergeStrategy<RequestResult<Weather>> = DefaultRequestResponseMergeStrategy()): Flow<RequestResult<Weather>> {
-
-        val cachedWeather: Flow<RequestResult<Weather>> = getAllFromDatabase()
-
-        val remoteWeather = getAllFromServer()
-
-        return cachedWeather.combine(remoteWeather, mergeStrategy::merge)
-            .flatMapConcat { result ->
-                if(result is RequestResult.Success) {
-                    database.weatherDao.observeAll()
-                        .map { it.toWeather() }
-                        .map { RequestResult.Success(it) }
-                }else{
-                        flowOf(result)
-                }
-            }
-    }
-
-    private fun getAllFromServer(): Flow<RequestResult<Weather>> {
-        Log.d("Repo", "getAllFromServer()");
-
-        val apiRequest = flow { emit(api.weatherResult(city = "Ivanovo"))}//перенести потом
-            .onEach { result ->
-                if(result.isSuccess){
-                    Log.d("Repos", "Success = ${result.getOrNull()}")
-                    saveNetResponseToCache(result.getOrThrow())
-                }else{
-                    Log.e("Repos", "Error = ${result.exceptionOrNull()}")
-                }
-            }
-            .map { it.toRequestResult() }
-
-        val start = flowOf<RequestResult<ResponseDTO>>(RequestResult.InProgress())
-
-        return merge(apiRequest, start)
-            .map { result ->
-                result.map{ it.toWeather() }
-            }
     }
 
     private suspend fun saveNetResponseToCache(data: ResponseDTO) {
@@ -100,7 +61,4 @@ class WeatherRepository @Inject constructor(
             }
     }
 
-    fun fetchLatest(): Flow<RequestResult<Weather>>{
-        return getAllFromServer()
-    }
 }

@@ -19,18 +19,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WeatherApi {
-
     @GET("weather")
     suspend fun weatherResponse(
         @Query("units") units: String? = "metric",
         @Query("q") city: String,
     ): Response<ResponseDTO>
-
-    @GET("weather")
-    suspend fun weatherResult(
-        @Query("units") units: String? = "metric",
-        @Query("q") city: String,
-    ): Result<ResponseDTO>
 }
 suspend fun <T : Any> handleApi(
     execute: suspend () -> Response<T>

@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.theweather.databinding.FragmentHomeBinding
-import com.example.weatherdata.viewModels.HelloScreenViewModel
+import com.example.theweather.view_models.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +20,7 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    val viewModel: HelloScreenViewModel by viewModels()
+    private val _viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,20 +32,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val viewModel =
-//            ViewModelProvider(this).get(HelloScreenViewModel::class.java)
-        viewModel.getWeather()
-//        val state = viewModel.state.value
-//        when(val currentState = state){
-//            is State.Success -> println("Success")
-//            is State.Error -> println("Error")
-//            is State.Loading -> println("Loading")
-//            State.None -> println("None")
-//        }
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val textView: TextView = binding.textHome
+        _viewModel.weatherModel.observe(viewLifecycleOwner) {
+            textView.text = "Температура " + it.temperature.toString()
+        }
         return root
     }
 
