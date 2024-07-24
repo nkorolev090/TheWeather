@@ -11,14 +11,15 @@ class WeatherDatabase internal constructor(private val database: WeatherRoomData
     val weatherDao: WeatherDao
         get() = database.weatherDao()
 }
-@Database(entities = [WeatherDBO::class], version = 1)
+@Database(entities = [WeatherDBO::class], version = 2)
 internal abstract class WeatherRoomDatabase : RoomDatabase() {
 
     abstract fun weatherDao(): WeatherDao
 
 }
 fun WeatherDatabase(applicationContext: Context): WeatherDatabase {
-    val weatherRoomDatabase = Room.databaseBuilder(
+    val weatherRoomDatabase =
+        Room.databaseBuilder(
         checkNotNull(applicationContext.applicationContext),
         WeatherRoomDatabase::class.java,
         "weather"
