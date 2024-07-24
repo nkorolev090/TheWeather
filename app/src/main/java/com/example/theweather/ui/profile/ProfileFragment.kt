@@ -1,4 +1,4 @@
-package com.example.theweather.ui.recommendations
+package com.example.theweather.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.theweather.databinding.FragmentRecommendationsBinding
-import com.example.theweather.view_models.recommendations.RecommendationsViewModel
+import com.example.theweather.databinding.FragmentProfileBinding
+import com.example.theweather.view_models.profile.ProfileViewModel
 
-class RecommendationsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentRecommendationsBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,9 +24,9 @@ class RecommendationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val recommendationsViewModel =
-            ViewModelProvider(this).get(RecommendationsViewModel::class.java)
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentRecommendationsBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
