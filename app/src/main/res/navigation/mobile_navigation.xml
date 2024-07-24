@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_clothes"
-        android:name="com.example.theweather.ui.clothers.ClothesFragment"
+        android:name="com.example.theweather.ui.clothes.ClothesFragment"
         android:label="@string/title_clothes"
         tools:layout="@layout/fragment_clothes" />
 

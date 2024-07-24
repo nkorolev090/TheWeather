@@ -1,4 +1,4 @@
-package com.example.theweather.ui.clothers
+package com.example.theweather.ui.clothes
 
 import android.os.Bundle
 import android.view.LayoutInflater

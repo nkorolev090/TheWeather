@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
-    tools:context=".MainActivity">
+    tools:context=".ui.home.HomeFragment">
 
     <TextView
         android:id="@+id/feels_like_text"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureText"
+        app:layout_constraintTop_toBottomOf="@+id/tempContainer"
         app:layout_constraintVertical_bias="0.20999998" />
 
     <ImageView
@@ -30,82 +30,101 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rainy_weather" />
 
-    <TextView
-        android:id="@+id/temperatureText"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tempContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_extrabold"
-        tools:text="+21°C"
-        android:textColor="@color/white"
-        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/humidityText"
+        <ImageView
+            android:id="@+id/temperatureImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/temperatureText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_temperature" />
+
+        <TextView
+            android:id="@+id/temperatureText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_extrabold"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="+21°C" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/himidityContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:fontFamily="@font/inter_extrabold"
-        tools:text="70%"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/temperatureImageView"
-        app:layout_constraintEnd_toStartOf="@+id/temperatureText"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/temperatureImageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+        app:layout_constraintEnd_toStartOf="@id/tempContainer"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/windSpeedText"
+        <ImageView
+            android:id="@+id/humidityImageView"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/humidityText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_humidity" />
+
+        <TextView
+            android:id="@+id/humidityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:fontFamily="@font/inter_extrabold"
+            tools:text="70%"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/windSpeedContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/inter_extrabold"
-        tools:text="5м/c"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/temperatureText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/temperatureText"
-        app:layout_constraintTop_toTopOf="@+id/temperatureText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+        app:layout_constraintStart_toEndOf="@id/tempContainer"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <ImageView
-        android:id="@+id/humidityImageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/humidityText"
-        app:layout_constraintEnd_toStartOf="@+id/humidityText"
-        app:layout_constraintTop_toTopOf="@+id/humidityText"
-        app:srcCompat="@drawable/humid" />
+        <ImageView
+            android:id="@+id/windSpeedImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/windSpeedText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_wind" />
+        <TextView
+            android:id="@+id/windSpeedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_extrabold"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5м/c" />
 
-    <ImageView
-        android:id="@+id/temperatureImageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/temperatureText"
-        app:layout_constraintEnd_toStartOf="@+id/temperatureText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toTopOf="@+id/temperatureText"
-        app:srcCompat="@drawable/temp" />
-
-    <ImageView
-        android:id="@+id/windSpeedImageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/windSpeedText"
-        app:layout_constraintEnd_toStartOf="@+id/windSpeedText"
-        app:layout_constraintTop_toTopOf="@+id/windSpeedText"
-        app:srcCompat="@drawable/wind" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/searchEditText"

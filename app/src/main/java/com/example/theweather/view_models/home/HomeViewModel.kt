@@ -63,6 +63,10 @@ class HomeViewModel @Inject constructor(
     var searchCityText = MutableLiveData<String>().apply {
         value = "Ivanovo"
     }
+
+    var searchHintText = MutableLiveData<String>().apply {
+        value = "Поиск..."
+    }
     init {
         getWeather()
     }
@@ -83,12 +87,12 @@ class HomeViewModel @Inject constructor(
             is RequestResult.Success -> {
                 var notNullData = checkNotNull(response.data)
                 weatherModel.postValue(notNullData)
-                temperatureText.postValue(notNullData.temperature.toString())
-                humidityText.postValue(notNullData.humidity.toString())
+                temperatureText.postValue( if(notNullData.temperature > 0) {"+"} else {""} + notNullData.temperature.toString() + "°C")
+                humidityText.postValue(notNullData.humidity.toString() + "%")
                 pressureText.postValue(notNullData.pressure.toString())
-                feelsText.postValue(notNullData.feelsLike.toString())
+                feelsText.postValue("ощущается как: " + if(notNullData.feelsLike > 0) {"+"} else {""} + notNullData.feelsLike.toString() + "°C")
                 windDegText.postValue(notNullData.windDeg.toString())
-                windSpeedText.postValue(notNullData.windSpeed.toString())
+                windSpeedText.postValue(notNullData.windSpeed.toString() + " м/c")
                 main.postValue(notNullData.main)
                 Log.d("VM", "Success: temp " + response.data?.temperature.toString())
             }
