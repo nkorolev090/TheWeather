@@ -1,22 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:background="@drawable/main_bg"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+        android:id="@+id/feels_like_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:fontFamily="@font/anonymous_probold"
+        tools:text="ощущается как: +21°C"
+        android:textColor="@color/white"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureText"
+        app:layout_constraintVertical_bias="0.20999998" />
+
+    <ImageView
+        android:id="@+id/mainImageView"
+        android:layout_width="334dp"
+        android:layout_height="439dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rainy_weather" />
+
+    <TextView
+        android:id="@+id/temperatureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_extrabold"
+        tools:text="+21°C"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <TextView
+        android:id="@+id/humidityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:fontFamily="@font/inter_extrabold"
+        tools:text="70%"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureImageView"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureText"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/temperatureImageView" />
+
+    <TextView
+        android:id="@+id/windSpeedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/inter_extrabold"
+        tools:text="5м/c"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/temperatureText"
+        app:layout_constraintTop_toTopOf="@+id/temperatureText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/humidityImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/humidityText"
+        app:layout_constraintEnd_toStartOf="@+id/humidityText"
+        app:layout_constraintTop_toTopOf="@+id/humidityText"
+        app:srcCompat="@drawable/humid" />
+
+    <ImageView
+        android:id="@+id/temperatureImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureText"
+        app:layout_constraintEnd_toStartOf="@+id/temperatureText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="@+id/temperatureText"
+        app:srcCompat="@drawable/temp" />
+
+    <ImageView
+        android:id="@+id/windSpeedImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/windSpeedText"
+        app:layout_constraintEnd_toStartOf="@+id/windSpeedText"
+        app:layout_constraintTop_toTopOf="@+id/windSpeedText"
+        app:srcCompat="@drawable/wind" />
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="350dp"
+        android:layout_height="47dp"
+        android:background="@drawable/edittext_background"
+        android:drawableRight="@drawable/search"
+        android:ems="10"
+        tools:hint="Поиск..."
+        android:inputType="text"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/mainImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/anonymous_pro_bold"
+        android:text="Иваново"
+        android:textColor="@color/white"
+        android:textSize="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
