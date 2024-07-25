@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.theweather.databinding.FragmentClothesBinding
-import com.example.theweather.view_models.clothes.ClothesViewModel
 
 class ClothesFragment : Fragment() {
 

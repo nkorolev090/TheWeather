@@ -1,4 +1,4 @@
-package com.example.theweather.view_models.clothes
+package com.example.theweather.ui.clothes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

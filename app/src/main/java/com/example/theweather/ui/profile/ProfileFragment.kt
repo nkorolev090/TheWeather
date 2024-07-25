@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.theweather.databinding.FragmentProfileBinding
-import com.example.theweather.view_models.profile.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 

@@ -1,0 +1,71 @@
+package com.example.theweather.ui.home
+
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.theweather.models.ErrorUI
+import com.example.theweather.models.WeatherUI
+import com.example.theweather.models.toWeatherUI
+import com.example.weatherdata.weather.models.MainEnum
+import com.example.weatherdata.weather.models.Weather
+import com.example.weatherdata.weather.repository.RequestResult
+import com.example.weatherdata.weather.repository.WeatherRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Provider
+
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val repository: Provider<WeatherRepository>
+) : ViewModel() {
+
+    var weatherModel = MutableLiveData<Weather>().apply {
+        value = Weather(0.0, 0, MainEnum.RAIN, 0, 0.0, 0, 0.0)
+    }
+
+    var weatherUI = MutableLiveData<WeatherUI>().apply {
+        value = WeatherUI()
+    }
+
+    var errorUI = MutableLiveData<ErrorUI>().apply {
+            value = ErrorUI()
+        }
+    init {
+        getWeather()
+    }
+    private fun getWeather(city: String? = weatherUI.value?.searchCityText) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val notNullCity = city ?:  ""
+                val response = repository.get().getAllWeather(notNullCity)
+
+                Log.d("VM","Response: ")
+                setupFields(response)
+            }
+        }
+    }
+
+    private fun setupFields(response: RequestResult<Weather>) {
+        when (response) {
+            is RequestResult.Success -> {
+                var notNullData = checkNotNull(response.data)
+                weatherUI.postValue(notNullData.toWeatherUI())
+                Log.d("VM", "Success: temp " + response.data?.temperature.toString())
+            }
+
+            is RequestResult.Error -> {
+                errorUI.postValue(ErrorUI(response.message.toString(), response.code.toString()) )
+                Log.e("VM", "Error")
+            }
+
+            is RequestResult.InProgress -> {
+                Log.i("VM", "InProgress")
+            }
+        }
+    }
+}
+

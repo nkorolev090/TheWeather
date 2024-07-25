@@ -1,4 +1,4 @@
-package com.example.theweather.view_models.profile
+package com.example.theweather.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
