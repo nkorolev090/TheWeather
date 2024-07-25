@@ -23,9 +23,6 @@ class HomeViewModel @Inject constructor(
     private val repository: Provider<WeatherRepository>
 ) : ViewModel() {
 
-    var weatherModel = MutableLiveData<Weather>().apply {
-        value = Weather(0.0, 0, MainEnum.RAIN, 0, 0.0, 0, 0.0)
-    }
 
     var weatherUI = MutableLiveData<WeatherUI>().apply {
         value = WeatherUI()
@@ -34,10 +31,15 @@ class HomeViewModel @Inject constructor(
     var errorUI = MutableLiveData<ErrorUI>().apply {
             value = ErrorUI()
         }
+
+    var searchText = MutableLiveData<String>().apply {
+        value = "Ivanovo"
+    }
+
     init {
         getWeather()
     }
-    private fun getWeather(city: String? = weatherUI.value?.searchCityText) {
+    private fun getWeather(city: String? = searchText.value) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val notNullCity = city ?:  ""

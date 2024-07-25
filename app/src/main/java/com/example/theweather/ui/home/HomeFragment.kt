@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.theweather.databinding.FragmentHomeBinding
@@ -36,7 +34,7 @@ class HomeFragment : Fragment() {
             binding.humidityText.text = it.humidityText
             binding.windSpeedText.text = it.windSpeedText
             binding.feelsLikeText.text = it.feelsText
-            binding.cityText.text = it.searchCityText
+            binding.cityText.text = it.cityText
             binding.searchEditText.hint = it.searchHintText
         }
         return root

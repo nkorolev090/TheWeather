@@ -1,6 +1,8 @@
 package com.example.theweather
 
 import android.content.Context
+import com.example.clothesdb.ClothesDatabase
+import com.example.clothesdb.ClothesRoomDatabase
 import com.example.data.WeatherApi
 import com.example.weathercommon.AppDispatchers
 import com.example.weatherdb.WeatherDatabase
@@ -41,10 +43,14 @@ object AppModule {
     }
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): WeatherDatabase{
+    fun provideWeatherDatabase(@ApplicationContext context: Context): WeatherDatabase{
         return WeatherDatabase(context)
     }
-
+    @Provides
+    @Singleton
+    fun provideClothesDatabase(@ApplicationContext context: Context): ClothesDatabase {
+        return ClothesDatabase(context)
+    }
     @Provides
     @Singleton
     fun provideAppCoroutineDispatchers(): AppDispatchers{

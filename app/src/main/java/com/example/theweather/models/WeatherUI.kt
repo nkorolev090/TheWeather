@@ -11,7 +11,7 @@ class WeatherUI (
     val feelsText : String = "-",
     val windDegText : String = "-",
     val windSpeedText : String = "-",
-    val searchCityText : String = "Ivanovo",
+    val cityText : String = "Ivanovo",
     val searchHintText : String = "Поиск...",
 )
 

@@ -31,7 +31,6 @@ class WeatherRepository @Inject constructor(
     suspend fun getAllWeather(city: String): RequestResult<Weather>{
         val response = handleApi { api.weatherResponse(city = city) }
 
-
         return when(response){
             is RequestResultAPI.Success->RequestResult.Success(response.data.toWeather())
             is RequestResultAPI.InProgress->RequestResult.InProgress()
