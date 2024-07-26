@@ -6,20 +6,20 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.clothesdb.models.ClothesDBO
+import com.example.clothesdb.models.ClothesTypeDBO
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ClothesDao {
-
-    @Query("SELECT * FROM clothes")
-    suspend fun getAll(): List<ClothesDBO>
+interface ClothesTypeDao {
+    @Query("SELECT * FROM clothesType")
+    suspend fun getAll(): List<ClothesTypeDBO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(clothes: ClothesDBO) : Long
+    suspend fun insert(clothesType: ClothesTypeDBO) : Long
 
     @Delete
-    suspend fun remove(clothes: ClothesDBO)
+    suspend fun remove(clothesType: ClothesTypeDBO)
 
-    @Query("DELETE FROM clothes")
+    @Query("DELETE FROM clothesType")
     suspend fun clean()
 }

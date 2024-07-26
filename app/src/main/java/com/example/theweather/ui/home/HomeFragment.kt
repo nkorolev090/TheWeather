@@ -1,11 +1,14 @@
 package com.example.theweather.ui.home
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.theweather.R
 import com.example.theweather.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +39,16 @@ class HomeFragment : Fragment() {
             binding.feelsLikeText.text = it.feelsText
             binding.cityText.text = it.cityText
             binding.searchEditText.hint = it.searchHintText
+            binding.mainImageView.setImageResource(it.main)
         }
+
+        binding.searchEditText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                _viewModel.getWeather(binding.searchEditText.text.toString())
+            }
+            false
+        })
+
         return root
     }
 

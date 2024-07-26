@@ -9,7 +9,7 @@ import com.example.clothesdb.models.enums.MainTypeEnumDBO
 import com.example.clothesdb.models.enums.StyleEnumDBO
 import com.example.clothesdb.models.enums.SubTypeEnumDBO
 
-@Entity
+@Entity(tableName = "clothesType")
 data class ClothesTypeDBO (
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo("mainType") val mainType: MainTypeEnumDBO,

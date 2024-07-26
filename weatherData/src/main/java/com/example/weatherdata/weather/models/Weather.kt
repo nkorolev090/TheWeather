@@ -10,4 +10,5 @@ data class Weather (
     val feelsLike: Double,
     @IntRange(from = 0, to = 360) val windDeg: Int,
     val windSpeed: Double,
+    val city: String,
 )

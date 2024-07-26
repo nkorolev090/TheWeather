@@ -39,9 +39,10 @@ class HomeViewModel @Inject constructor(
     init {
         getWeather()
     }
-    private fun getWeather(city: String? = searchText.value) {
+    public fun getWeather(city: String? = searchText.value) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
+                Log.d("VM","Request, SEARCH:"+ city)
                 val notNullCity = city ?:  ""
                 val response = repository.get().getAllWeather(notNullCity)
 

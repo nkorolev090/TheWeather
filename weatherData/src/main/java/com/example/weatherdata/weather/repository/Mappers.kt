@@ -14,7 +14,8 @@ internal fun WeatherDBO.toWeather() : Weather{
         pressure = pressure,
         feelsLike = feelsLike,
         windDeg = windDeg,
-        windSpeed = windSpeed
+        windSpeed = windSpeed,
+        city = ""
     )
 }
 
@@ -42,7 +43,8 @@ internal fun ResponseDTO.toWeather() : Weather{
         pressure = main.pressure,
         feelsLike = main.feelsLike,
         windDeg = wind.deg,
-        windSpeed = wind.speed
+        windSpeed = wind.speed,
+        city = name
     )
 }
 
