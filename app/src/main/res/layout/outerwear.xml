@@ -8,29 +8,30 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/krop_top"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:visibility="visible"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="425dp"
+        android:id="@+id/imageViewPopupBack"
+        android:layout_width="match_parent"
         android:layout_height="273dp"
         android:layout_marginBottom="4dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bg_describtion" />
+        app:srcCompat="@drawable/bg_description" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="стиль"
@@ -38,33 +39,32 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
         app:layout_constraintVertical_bias="0.218" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewSeason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="сезон"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMaterial"
         app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/textViewStyle"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintVertical_bias="0.418" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="192dp"
-
         android:text="Кроп топ"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -72,151 +72,140 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewMaterial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="материал"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/textViewTitle"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintVertical_bias="0.422" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="67dp"
-        android:layout_height="68dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/white"
-        android:text="→"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+    <ImageButton
+        android:id="@+id/button_right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/next_btn"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658"
-        tools:ignore="DuplicateIds" />
+        app:layout_constraintVertical_bias="0.6" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="67dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="132dp"
-        android:backgroundTint="@color/white"
-        android:text="←"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+    <ImageButton
+        android:id="@+id/button_left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/back_btn"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="DuplicateIds" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textViewStyleValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:text="спортивный"
         android:textColor="#8399A9"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toEndOf="@+id/textViewStyle"
         app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textViewStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStyle"
         app:layout_constraintVertical_bias="0.676" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewSeasonValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="95dp"
         android:text="весна"
         android:textColor="#8399A9"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSeason"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textViewSeason"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSeason"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewMaterialValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="98dp"
         android:text="вискоза"
         android:textColor="#8399A9"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMaterial"
         app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textViewMaterial"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaterial"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
+        android:id="@+id/button_back"
         style="@android:style/Widget.Button"
-        android:layout_width="425dp"
+        android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/shape"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/btn_background_black"
         android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:text="Назад"
+        tools:text="Назад"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="DuplicateIds" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewColor1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewColor3"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewColor2"
         app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/textViewTitle"
+        app:layout_constraintTop_toTopOf="@+id/imageViewColor3"
         app:layout_constraintVertical_bias="0.666"
         app:srcCompat="@drawable/yellow_ball" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewColor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewColor3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageViewColor3"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/red_ball" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageViewColor3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/textViewMaterial"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewColor2"
         app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageViewColor1"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintVertical_bias="0.45"
         app:srcCompat="@drawable/purple_ball" />
 

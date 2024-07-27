@@ -32,10 +32,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        _viewModel.weatherModel.observe(viewLifecycleOwner) {
-            textView.text = "Температура " + it.temperature.toString()
-        }
         return root
     }
 
