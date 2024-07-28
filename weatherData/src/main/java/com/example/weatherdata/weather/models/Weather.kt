@@ -1,6 +1,7 @@
 package com.example.weatherdata.weather.models
 
 import androidx.annotation.IntRange
+import java.time.LocalDateTime
 
 data class Weather (
     val temperature: Double,
@@ -11,4 +12,5 @@ data class Weather (
     @IntRange(from = 0, to = 360) val windDeg: Int,
     val windSpeed: Double,
     val city: String,
+    val requestDateTime: LocalDateTime,
 )

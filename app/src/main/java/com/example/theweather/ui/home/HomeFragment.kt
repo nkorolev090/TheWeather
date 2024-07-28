@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.theweather.databinding.FragmentHomeBinding
+import com.example.theweather.toVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +44,8 @@ class HomeFragment : Fragment() {
             binding.cityText.text = it.cityText
             binding.searchEditText.hint = it.searchHintText
             binding.mainImageView.setImageResource(it.main)
+            binding.requestTimeText.text = it.requestDateTimeText
+            binding.requestTimeText.visibility = it.shouldShowRequestTime.toVisibility()
         }
 
         binding.searchEditText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->

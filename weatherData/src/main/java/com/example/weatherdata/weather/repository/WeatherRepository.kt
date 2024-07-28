@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onEmpty
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 
@@ -32,10 +33,18 @@ class WeatherRepository @Inject constructor(
         val response = handleApi { api.weatherResponse(city = city) }
 
         return when(response){
-            is RequestResultAPI.Success->RequestResult.Success(response.data.toWeather())
+            is RequestResultAPI.Success->{
+                saveNetResponseToCache(response.data)
+                RequestResult.Success(response.data.toWeather())}
             is RequestResultAPI.InProgress->RequestResult.InProgress()
-            is RequestResultAPI.Error->RequestResult.Error(code = response.code, message = response.message)
-            is RequestResultAPI.Exception->RequestResult.Error(error = response.throwable)
+            is RequestResultAPI.Error->{
+                getFromDatabase(city)
+                //RequestResult.Error(code = response.code, message = response.message)
+            }
+            is RequestResultAPI.Exception-> {
+                getFromDatabase(city)
+//                RequestResult.Error(error = response.throwable)
+            }
         }
     }
 
@@ -45,6 +54,20 @@ class WeatherRepository @Inject constructor(
         database.weatherDao.insert(dbos)
     }
 
+    suspend fun saveNetResponseToCache() {
+        val data = WeatherDBO(
+            city = "Ivanovo",
+            temperature = 20.2,
+            humidity = 88,
+            main = "rain",
+            pressure = 79,
+            feelsLike = 21.1,
+            windDeg = 20,
+            windSpeed = 3.3,
+            requestDateTime = LocalDateTime.now()
+        )
+        database.weatherDao.insert(data)
+    }
     private fun getAllFromDatabase(): Flow<RequestResult<Weather>> {
         val dbRequest =  database.weatherDao::getAll
             .asFlow()
@@ -60,4 +83,8 @@ class WeatherRepository @Inject constructor(
             }
     }
 
+    private suspend fun getFromDatabase(city: String): RequestResult<Weather>{
+        var data = database.weatherDao.getFromCity(city).first().toWeather()//try catch
+        return RequestResult.Success(data)
+    }
 }

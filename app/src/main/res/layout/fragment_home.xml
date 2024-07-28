@@ -21,6 +21,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tempContainer"
         app:layout_constraintVertical_bias="0.20999998" />
 
+    <TextView
+        android:id="@+id/requestTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/anonymous_probold"
+        android:textColor="@color/white_200"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feels_like_text"
+        tools:text="Данные актуальны на:..." />
+
     <ImageView
         android:id="@+id/mainImageView"
         android:layout_width="334dp"

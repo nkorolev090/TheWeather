@@ -3,6 +3,7 @@ package com.example.weatherdb.dao
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.weatherdb.models.WeatherDBO
 import kotlinx.coroutines.flow.Flow
@@ -11,12 +12,12 @@ import kotlinx.coroutines.flow.Flow
 interface WeatherDao {
 
     @Query("SELECT * FROM weather")
-    fun getAll(): WeatherDBO
+    suspend fun getAll(): WeatherDBO
 
-    @Query("SELECT * FROM weather")
-    fun observeAll(): Flow<WeatherDBO>
+    @Query("SELECT * FROM weather WHERE city = :city")
+    suspend fun getFromCity(city: String): List<WeatherDBO>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(weatherDBO: WeatherDBO)
 
     @Delete

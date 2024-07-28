@@ -2,6 +2,7 @@ package com.example.theweather.ui.clothes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.ui.clothes.models.ClothesTypeUI
 import com.example.weatherdata.clothes.repository.ClothesRepository
@@ -17,7 +18,7 @@ class ClothesViewModel @Inject constructor(
     private var _clothesTypes: List<ClothesTypeUI> = listOf(
         ClothesTypeUI("Верх", R.drawable.clothes_type_top),
         ClothesTypeUI("Низ", R.drawable.clothes_type_low),
-        ClothesTypeUI("Обувь", R.drawable.clothes_type_shoes)
+        ClothesTypeUI("Обувь", R.drawable.clothes_type_shoes2)
     )
     var clothesTypes = MutableLiveData<List<ClothesTypeUI>>().apply {
         value = _clothesTypes
@@ -57,4 +58,8 @@ class ClothesViewModel @Inject constructor(
 //            }
 //        }
 //    }
+
+    public fun navToClothesRecommendations(clothesType: ClothesTypeUI){
+        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsFragment)
+    }
 }

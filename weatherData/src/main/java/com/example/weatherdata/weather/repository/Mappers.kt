@@ -5,6 +5,7 @@ import com.example.data.models.ResponseDTO
 import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdb.models.WeatherDBO
+import java.time.LocalDateTime
 
 internal fun WeatherDBO.toWeather() : Weather{
     return Weather(
@@ -15,7 +16,8 @@ internal fun WeatherDBO.toWeather() : Weather{
         feelsLike = feelsLike,
         windDeg = windDeg,
         windSpeed = windSpeed,
-        city = ""
+        city = "",
+        requestDateTime = requestDateTime
     )
 }
 
@@ -25,14 +27,16 @@ private fun String.toMainEnum(): MainEnum {
 
 internal fun ResponseDTO.toWeatherDBO() : WeatherDBO{
     return WeatherDBO(
-        id = id,
         temperature = main.temp,
         humidity = main.humidity,
         main = weather.first().main,
         pressure = main.pressure,
         feelsLike = main.feelsLike,
         windDeg = wind.deg,
-        windSpeed = wind.speed)
+        windSpeed = wind.speed,
+        city = name,
+        requestDateTime = LocalDateTime.now()
+        )
 }
 
 internal fun ResponseDTO.toWeather() : Weather{
@@ -44,7 +48,8 @@ internal fun ResponseDTO.toWeather() : Weather{
         feelsLike = main.feelsLike,
         windDeg = wind.deg,
         windSpeed = wind.speed,
-        city = name
+        city = name,
+        requestDateTime = LocalDateTime.now()
     )
 }
 

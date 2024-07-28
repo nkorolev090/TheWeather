@@ -48,6 +48,7 @@ class HomeViewModel @Inject constructor(
 
                 Log.d("VM","Response: ")
                 setupFields(response)
+               // repository.get().saveNetResponseToCache()
             }
         }
     }

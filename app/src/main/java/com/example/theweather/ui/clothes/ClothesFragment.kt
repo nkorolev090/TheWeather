@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.theweather.databinding.FragmentClothesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +32,9 @@ class ClothesFragment : Fragment() {
         binding.clothesTypesRecycle.layoutManager = LinearLayoutManager(context)
 
         _viewModel.clothesTypes.observe(viewLifecycleOwner){
-            binding.clothesTypesRecycle.adapter = ClothesTypesRecyclerAdapter(it)
+            binding.clothesTypesRecycle.adapter = ClothesTypesRecyclerAdapter(it){ item ->
+                _viewModel.navToClothesRecommendations(item)
+            }
         }
         return root
     }

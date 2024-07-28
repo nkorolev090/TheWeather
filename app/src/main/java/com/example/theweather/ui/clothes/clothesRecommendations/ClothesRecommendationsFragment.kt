@@ -1,4 +1,4 @@
-package com.example.theweather.ui.clothes.clothesRecomendations
+package com.example.theweather.ui.clothes.clothesRecommendations
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -7,22 +7,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.theweather.R
+import com.example.theweather.databinding.FragmentClothesBinding
+import com.example.theweather.databinding.FragmentClothesRecommendationsBinding
 
-class ClothesRecomendationsFragment : Fragment() {
+class ClothesRecommendationsFragment : Fragment() {
 
+    private var _binding: FragmentClothesRecommendationsBinding? = null
 
-    private val _viewModel: ClothesRecomendationsViewModel by viewModels()
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private val _viewModel: ClothesRecommendationsViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_clothes_recomendations, container, false)
+        _binding = FragmentClothesRecommendationsBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        binding.buttonBack.setOnClickListener{
+            _viewModel.navToClothesFragment()
+        }
+
+        binding.buttonBack.text = _viewModel.backBtnText
+
+        return root
     }
 }
