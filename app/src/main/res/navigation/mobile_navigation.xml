@@ -22,4 +22,9 @@
         android:name="com.example.theweather.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.theweather.MainActivity"
+        android:label="fragment_wear"
+        tools:layout="@layout/fragment_wear" />
 </navigation>

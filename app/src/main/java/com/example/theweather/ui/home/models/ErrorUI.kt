@@ -1,4 +1,4 @@
-package com.example.theweather.models
+package com.example.theweather.ui.home.models
 
 import com.example.weatherdata.weather.models.Weather
 

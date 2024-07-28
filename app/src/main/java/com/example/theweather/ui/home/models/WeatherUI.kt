@@ -1,4 +1,4 @@
-package com.example.theweather.models
+package com.example.theweather.ui.home.models
 
 import com.example.theweather.R
 import com.example.weatherdata.weather.models.MainEnum
@@ -16,7 +16,7 @@ class WeatherUI (
     val searchHintText : String = "Поиск...",
 )
 
-fun Weather.toWeatherUI() : WeatherUI{
+fun Weather.toWeatherUI() : WeatherUI {
     return WeatherUI(
         temperatureText = if(temperature > 0) {"+"} else {""} + temperature.toString() + "°C",
         humidityText = "$humidity%",

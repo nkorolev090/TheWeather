@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.theweather.models.ErrorUI
-import com.example.theweather.models.WeatherUI
-import com.example.theweather.models.toWeatherUI
+import com.example.theweather.ui.home.models.ErrorUI
+import com.example.theweather.ui.home.models.WeatherUI
+import com.example.theweather.ui.home.models.toWeatherUI
 import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdata.weather.repository.RequestResult

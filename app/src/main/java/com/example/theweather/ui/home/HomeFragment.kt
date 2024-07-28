@@ -1,6 +1,5 @@
 package com.example.theweather.ui.home
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.theweather.R
 import com.example.theweather.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,9 +27,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        setup()
+
+        return root
+    }
+
+    private fun setup() {
         _viewModel.weatherUI.observe(viewLifecycleOwner) {
             binding.temperatureText.text = it.temperatureText
             binding.humidityText.text = it.humidityText
@@ -48,8 +51,6 @@ class HomeFragment : Fragment() {
             }
             false
         })
-
-        return root
     }
 
     override fun onDestroyView() {
