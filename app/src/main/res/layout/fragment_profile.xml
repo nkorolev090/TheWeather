@@ -4,19 +4,215 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:background="#ececec">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewPopupBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="307dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/purple_ellipse"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageViewFaceFrame"
+                    android:layout_width="215dp"
+                    android:layout_height="226dp"
+                    android:src="@drawable/face_frame"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
+
+                    app:layout_constraintVertical_bias="0.946" />
+
+                <ImageView
+                    android:id="@+id/imageViewFace"
+                    android:layout_width="215dp"
+                    android:layout_height="226dp"
+                    android:padding="5dp"
+                    android:src="@drawable/face"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewFaceFrame"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewFaceFrame"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewFaceFrame"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewFaceFrame" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Панова Милана"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewFaceFrame"
+                    app:layout_constraintHorizontal_bias="0.49"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewFaceFrame"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewFaceFrame" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                    app:layout_constraintVertical_bias="1.0">
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonUserData"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_profile"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Редактировать профиль"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonSecurity"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_security"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Безопасность"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonNotification"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_notification"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Уведомления"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonPrivacy"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_privacy"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Приватность"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonSubscribes"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_subscribes"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Подписки"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonHelp"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/btn_background_white"
+                        android:drawableStart="@drawable/ic_help"
+                        android:drawablePadding="20dp"
+                        android:paddingStart="20dp"
+                        android:text="Поддержка"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="DuplicateIds" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewName">
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="statusBarColorDefault">#A1AAFF</color>
     <color name="navBarColorDefault">#737ef4</color>
+    <color name="gray_800">#262626</color>
 </resources>

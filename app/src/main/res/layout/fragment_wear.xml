@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"
         app:layout_constraintVertical_bias="0.218" />
 
     <TextView
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.418" />
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="192dp"
@@ -85,7 +85,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
         app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitle"
+        app:layout_constraintStart_toEndOf="@+id/textViewName"
         app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintVertical_bias="0.422" />
 
@@ -162,7 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/btn_background_black"
         android:drawablePadding="20dp"
         tools:text="Назад"
@@ -181,9 +181,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewColor3"
         app:layout_constraintEnd_toStartOf="@+id/imageViewColor2"
         app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitle"
+        app:layout_constraintStart_toEndOf="@+id/textViewName"
         app:layout_constraintTop_toTopOf="@+id/imageViewColor3"
-        app:layout_constraintVertical_bias="0.666"
         app:srcCompat="@drawable/yellow_ball" />
 
     <ImageView
@@ -194,7 +193,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewColor3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewColor3"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/red_ball" />
 
     <ImageView
