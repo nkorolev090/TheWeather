@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.theweather.ui.home.models.ErrorUI
 import com.example.theweather.ui.home.models.WeatherUI
 import com.example.theweather.ui.home.models.toWeatherUI
-import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdata.weather.repository.RequestResult
 import com.example.weatherdata.weather.repository.WeatherRepository

@@ -20,7 +20,7 @@ class ClothesDatabase internal constructor(private val database: ClothesRoomData
     val tempModeDao: TempModeDao
         get() = database.tempModeDao()
 }
-@Database(entities = [ClothesDBO::class, TempModeDBO::class, ClothesTypeDBO::class], version = 2)
+@Database(entities = [ClothesDBO::class, TempModeDBO::class, ClothesTypeDBO::class], version = 3)
 @TypeConverters(TypeConverter::class)
 abstract class ClothesRoomDatabase : RoomDatabase() {
 

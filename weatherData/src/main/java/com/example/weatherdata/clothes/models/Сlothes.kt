@@ -8,4 +8,5 @@ data class Clothes(
      val size: String,
      val tempMode: TempMode,
      val clothesType: ClothesType,
+     val season: String
 )

@@ -17,4 +17,5 @@ data class ClothesDBO(
     @ColumnInfo("size") val size: String,
     @ColumnInfo("tempModeId") val tempModeId: Long,
     @ColumnInfo("clothesTypeId") val clothesTypeId: Long,
+    @ColumnInfo("season") val season: String,
 )

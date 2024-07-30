@@ -1,6 +1,5 @@
 package com.example.weatherdata.weather.repository
 
-import com.example.data.models.MainEnumDTO
 import com.example.data.models.ResponseDTO
 import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
@@ -22,7 +21,15 @@ internal fun WeatherDBO.toWeather() : Weather{
 }
 
 private fun String.toMainEnum(): MainEnum {
-    return MainEnum.RAIN
+    return when(this){
+        "clear" -> {
+            MainEnum.CLEAR
+        }
+        "clouds" -> {
+            MainEnum.CLEAR
+        }
+        else -> {MainEnum.RAIN}
+    }
 }
 
 internal fun ResponseDTO.toWeatherDBO() : WeatherDBO{
@@ -51,8 +58,4 @@ internal fun ResponseDTO.toWeather() : Weather{
         city = name,
         requestDateTime = LocalDateTime.now()
     )
-}
-
-private fun MainEnumDTO.toMainEnum(): MainEnum {
-    return MainEnum.RAIN
 }

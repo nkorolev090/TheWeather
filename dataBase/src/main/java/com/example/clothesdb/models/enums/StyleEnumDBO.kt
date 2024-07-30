@@ -5,4 +5,6 @@ import androidx.room.ColumnInfo
 enum class StyleEnumDBO {
     @ColumnInfo("official")
     OFFICIAL,
+    @ColumnInfo("sport")
+    SPORT,
 }

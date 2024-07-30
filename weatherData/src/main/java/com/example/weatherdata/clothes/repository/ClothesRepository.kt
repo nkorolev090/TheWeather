@@ -77,7 +77,8 @@ return ClothesDBO(
     material = material,
     size = size,
     tempModeId = tempModeId,
-    clothesTypeId = clothesTypeId
+    clothesTypeId = clothesTypeId,
+    season = season,
 )
 }
 
@@ -88,7 +89,8 @@ private fun ClothesDBO.toClothes(): Clothes {
         name = name,
         material = material,
         size = size,
-        tempMode =  TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),//mock
-        clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL)//mock
+        tempMode = TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),//mock
+        clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),//mock
+        season = season
     )
 }
