@@ -5,8 +5,11 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.theweather.MAIN
+import com.example.theweather.R
 import com.example.theweather.databinding.FragmentHomeBinding
 import com.example.theweather.toVisibility
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +30,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.mainStatusBarColor)
+        MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.navBarColor)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -6,5 +6,5 @@
   <path
       android:pathData="m9.08,0h357.85c5.01,0 9.08,4.07 9.08,9.08v36.42H0V9.08C0,4.07 4.07,0 9.08,0Z"
       android:strokeWidth="0"
-      android:fillColor="@color/navBarColorDefault"/>
+      android:fillColor="@color/navBarColor"/>
 </vector>

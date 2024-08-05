@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.theweather.MAIN
+import com.example.theweather.R
 import com.example.theweather.databinding.FragmentClothesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +29,10 @@ class ClothesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MAIN.showBottomNavigation()
+        MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.clothesColor)
+        MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.navBarColor)
+
         _binding = FragmentClothesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

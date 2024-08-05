@@ -10,6 +10,7 @@ import com.example.theweather.R
 import com.example.theweather.ui.clothes.models.ClothesUI
 import com.example.theweather.ui.home.models.ErrorUI
 import com.example.weatherdata.clothes.models.Clothes
+import com.example.weatherdata.clothes.repository.ClothesRepository
 import com.example.weatherdata.clothes.useCase.ClothesUseCase
 import com.example.weatherdata.weather.repository.RequestResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,23 +22,40 @@ import javax.inject.Provider
 
 @HiltViewModel
 class ClothesRecommendationsViewModel @Inject constructor(
-    private val repository: Provider<ClothesUseCase>
+    //private val repository: Provider<ClothesRepository>
+    private val useCase: Provider<ClothesUseCase>
 ) : ViewModel() {
+//class ClothesRecommendationsViewModel @Inject constructor(
+//    private val useCase: Provider<ClothesUseCase>
+//) : ViewModel() {
 
     var backBtnText = "Назад"
 
-    var clothesList = MutableLiveData<List<ClothesUI>>().apply {
+    private var clothesList = MutableLiveData<List<ClothesUI>>().apply {
         value = null
     }
 
+    public var currentClothes = MutableLiveData<ClothesUI>().apply {
+        value = ClothesUI(
+            colorText = "-",
+            nameText = "-",
+            materialText = "-",
+            seasonText = "-",
+            sizeText = "-",
+            styleText = "-",
+        )
+    }
     var errorUI = MutableLiveData<ErrorUI>().apply {
         value = ErrorUI()
     }
 
+    init {
+        getClothesList()
+    }
     private fun getClothesList(){
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val response = repository.get().getClothesListUseCase()
+                val response = useCase.get().getClothesListUseCase()
 
                 Log.d("VM","Response: ")
                 setupFields(response)
@@ -48,14 +66,15 @@ class ClothesRecommendationsViewModel @Inject constructor(
     private fun setupFields(response: RequestResult<List<Clothes>>) {
         when (response) {
             is RequestResult.Success -> {
-                var notNullData = checkNotNull(response.data)
-                clothesList.postValue(notNullData.map { it.toClothesUI() })
+                var notNullData = checkNotNull(response.data).map { it.toClothesUI() }
+                clothesList.postValue(notNullData)
+                currentClothes.postValue(notNullData[0])
                 Log.d("VM", "Success: clothes ")
             }
 
             is RequestResult.Error -> {
                 errorUI.postValue(ErrorUI(response.message.toString(), response.code.toString()) )
-                Log.e("VM", "Error")
+                Log.e("VM", "Error: clothes")
             }
 
             is RequestResult.InProgress -> {
@@ -80,5 +99,8 @@ private fun Clothes.toClothesUI(): ClothesUI {
 }
 
 private fun StyleEnumDBO.styleEnumToString(): String {//надо менять в дб на String и уносить enum
-    return "Официальный"
+    return when(this){
+        StyleEnumDBO.SPORT -> "Спортивный"
+        StyleEnumDBO.OFFICIAL -> "Официальный"
+    }
 }

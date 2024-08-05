@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import com.example.theweather.MAIN
 import com.example.theweather.R
-import com.example.theweather.databinding.FragmentClothesBinding
 import com.example.theweather.databinding.FragmentClothesRecommendationsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ClothesRecommendationsFragment : Fragment() {
 
     private var _binding: FragmentClothesRecommendationsBinding? = null
@@ -25,6 +28,10 @@ class ClothesRecommendationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MAIN.hideBottomNavigation()
+        MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.clothesRecommendationsColor)
+        MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.white)
+
         _binding = FragmentClothesRecommendationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -33,6 +40,13 @@ class ClothesRecommendationsFragment : Fragment() {
         }
 
         binding.buttonBack.text = _viewModel.backBtnText
+
+        _viewModel.currentClothes.observe(viewLifecycleOwner){
+            binding.textViewMaterialValue.text = it.materialText
+            binding.textViewName.text = it.nameText
+            binding.textViewSeasonValue.text = it.seasonText
+            binding.textViewStyleValue.text = it.styleText
+        }
 
         return root
     }

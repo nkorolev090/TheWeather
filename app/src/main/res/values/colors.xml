@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_200">#A1AAFF</color>
+    <color name="purple_300">#737ef4</color>
+    <color name="purple_400">#FFBB86FC</color>
+    <color name="purple_450">#613EEA</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="blue_200">#A7DEFE</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_200">#A6FFFFFF</color>
-    <color name="statusBarColorDefault">#A1AAFF</color>
-    <color name="navBarColorDefault">#737ef4</color>
     <color name="gray_800">#262626</color>
+    <color name="gray_600">#717171</color>
+    <color name="mainStatusBarColor">@color/purple_200</color>
+    <color name="navBarColor">@color/purple_300</color>
+    <color name="clothesRecommendationsColor">#FFF3E7</color>
+    <color name="clothesColor">@color/blue_200</color>
 </resources>

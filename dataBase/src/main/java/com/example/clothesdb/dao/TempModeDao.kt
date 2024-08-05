@@ -14,6 +14,9 @@ interface TempModeDao {
     @Query("SELECT * FROM tempMode")
     suspend fun getAll(): List<TempModeDBO>
 
+    @Query("SELECT * FROM tempMode WHERE id = :id")
+    suspend fun getFromId(id: Long): List<TempModeDBO>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(tempMode: TempModeDBO) : Long
 

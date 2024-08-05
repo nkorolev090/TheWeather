@@ -12,7 +12,7 @@ import javax.inject.Provider
 
 @HiltViewModel
 class ClothesViewModel @Inject constructor(
-    private val repository: Provider<ClothesRepository>
+//    private val repository: Provider<ClothesRepository>
 ) : ViewModel() {
 
     private var _clothesTypes: List<ClothesTypeUI> = listOf(
