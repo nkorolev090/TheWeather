@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/imageViewPopupBack"
         android:layout_width="match_parent"
-        android:layout_height="273dp"
+        android:layout_height="300dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,41 +29,12 @@
         app:srcCompat="@drawable/bg_description" />
 
     <TextView
-        android:id="@+id/textViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="стиль"
-        android:textColor="@color/gray_800"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSeason"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
-        app:layout_constraintHorizontal_bias="0.102"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewSeason" />
-
-    <TextView
-        android:id="@+id/textViewSeason"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="сезон"
-        android:textColor="@color/gray_800"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
-        app:layout_constraintEnd_toStartOf="@+id/textViewMaterial"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toEndOf="@+id/textViewStyle"
-        app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="192dp"
         android:text="Кроп топ"
-        android:textSize="30dp"
+        android:textSize="28sp"
         android:textColor="@color/gray_800"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,22 +44,8 @@
         app:layout_constraintTop_toTopOf="@+id/imageViewPopupBack"
         app:layout_constraintVertical_bias="0.26" />
 
-    <TextView
-        android:id="@+id/textViewMaterial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="материал"
-        android:textColor="@color/gray_800"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewSeason"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewPopupBack"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/textViewName"
-        app:layout_constraintTop_toTopOf="@+id/textViewSeason" />
-
     <ImageButton
-        android:id="@+id/button_right"
+        android:id="@+id/button_next"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="20dp"
@@ -99,7 +56,7 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <ImageButton
-        android:id="@+id/button_left"
+        android:id="@+id/button_previous"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -108,47 +65,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/textViewStyleValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:text="спортивный"
-        android:textColor="#8399A9"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewPopupBack"
-        app:layout_constraintEnd_toEndOf="@+id/textViewStyle"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toStartOf="@+id/textViewStyle"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStyle"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/textViewSeasonValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="весна"
-        android:textColor="#8399A9"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewStyleValue"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSeason"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewSeason"
-        app:layout_constraintTop_toTopOf="@+id/textViewStyleValue" />
-
-    <TextView
-        android:id="@+id/textViewMaterialValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="вискоза"
-        android:textColor="#8399A9"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewStyleValue"
-        app:layout_constraintEnd_toEndOf="@+id/textViewMaterial"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/textViewMaterial"
-        app:layout_constraintTop_toTopOf="@+id/textViewStyleValue" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_back"
@@ -199,6 +115,126 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewColor1"
         app:layout_constraintTop_toTopOf="@+id/textViewName"
         app:srcCompat="@drawable/purple_ball" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/button_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewName">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/styleContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/textViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Стиль"
+                android:textColor="@color/gray_800"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewStyleValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Спортивный"
+                android:textColor="@color/gray_500"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@color/gray_500"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/seasonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/textViewSeason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Стиль"
+                android:textColor="@color/gray_800"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewSeasonValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Спортивный"
+                android:textColor="@color/gray_500"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@color/gray_500"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/materialContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/textViewMaterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Стиль"
+                android:textColor="@color/gray_800"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewMaterialValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Спортивный"
+                android:textColor="@color/gray_500"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

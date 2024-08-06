@@ -90,7 +90,7 @@
         app:layout_constraintVertical_bias="0.422" />
 
     <ImageButton
-        android:id="@+id/button_right"
+        android:id="@+id/button_next"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="20dp"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <ImageButton
-        android:id="@+id/button_left"
+        android:id="@+id/button_previous"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"

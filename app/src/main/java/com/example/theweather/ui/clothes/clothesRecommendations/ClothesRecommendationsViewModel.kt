@@ -22,14 +22,13 @@ import javax.inject.Provider
 
 @HiltViewModel
 class ClothesRecommendationsViewModel @Inject constructor(
-    //private val repository: Provider<ClothesRepository>
     private val useCase: Provider<ClothesUseCase>
 ) : ViewModel() {
-//class ClothesRecommendationsViewModel @Inject constructor(
-//    private val useCase: Provider<ClothesUseCase>
-//) : ViewModel() {
 
-    var backBtnText = "Назад"
+    val backBtnText = "Назад"
+    val styleText = "Стиль"
+    val seasonText = "Сезон"
+    val materialText = "Материал"
 
     private var clothesList = MutableLiveData<List<ClothesUI>>().apply {
         value = null
