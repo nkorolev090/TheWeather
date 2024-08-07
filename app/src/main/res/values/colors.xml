@@ -15,6 +15,7 @@
     <color name="gray_800">#262626</color>
     <color name="gray_600">#717171</color>
     <color name="gray_500">#8399A9</color>
+    <color name="yellow_400">#F4C600</color>
     <color name="mainStatusBarColor">@color/purple_200</color>
     <color name="navBarColor">@color/purple_300</color>
     <color name="clothesRecommendationsColor">#FFF3E7</color>

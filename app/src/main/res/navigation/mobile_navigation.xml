@@ -17,8 +17,8 @@
         android:label="@string/title_clothes"
         tools:layout="@layout/fragment_clothes" >
         <action
-            android:id="@+id/action_navigation_clothes_to_clothesRecommendationsFragment"
-            app:destination="@id/clothesRecommendationsFragment" />
+            android:id="@+id/action_navigation_clothes_to_clothesRecommendationsListFragment"
+            app:destination="@id/clothesRecommendationsListFragment" />
     </fragment>
 
     <fragment
@@ -30,9 +30,14 @@
         android:id="@+id/clothesRecommendationsFragment"
         android:name="com.example.theweather.ui.clothes.clothesRecommendations.ClothesRecommendationsFragment"
         android:label="fragment_clothes_recommendations"
-        tools:layout="@layout/fragment_clothes_recommendations" >
+        tools:layout="@layout/fragment_clothes_recommendations" />
+    <fragment
+        android:id="@+id/clothesRecommendationsListFragment"
+        android:name="com.example.theweather.ui.clothes.clothesRecommendationsList.ClothesRecommendationsListFragment"
+        android:label="fragment_clothes_recommendations_list"
+        tools:layout="@layout/fragment_clothes_recommendations_list" >
         <action
-            android:id="@+id/action_clothesRecommendationsFragment_to_navigation_clothes"
+            android:id="@+id/action_clothesRecommendationsListFragment_to_navigation_clothes"
             app:destination="@id/navigation_clothes" />
     </fragment>
 

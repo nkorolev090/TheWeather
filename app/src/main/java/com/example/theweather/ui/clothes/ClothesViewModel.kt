@@ -60,6 +60,6 @@ class ClothesViewModel @Inject constructor(
 //    }
 
     public fun navToClothesRecommendations(clothesType: ClothesTypeUI){
-        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsFragment)
+        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment)
     }
 }

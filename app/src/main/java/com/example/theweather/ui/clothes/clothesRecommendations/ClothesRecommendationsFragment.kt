@@ -35,14 +35,14 @@ class ClothesRecommendationsFragment : Fragment() {
         _binding = FragmentClothesRecommendationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.buttonBack.setOnClickListener{
-            _viewModel.navToClothesFragment()
-        }
+//        binding.buttonBack.setOnClickListener{
+//            _viewModel.navToClothesFragment()
+//        }
 
         binding.buttonBack.text = _viewModel.backBtnText
         binding.textViewStyle.text = _viewModel.styleText
         binding.textViewSeason.text = _viewModel.seasonText
-        binding.textViewMaterial.text = _viewModel.styleText
+        binding.textViewMaterial.text = _viewModel.materialText
 
         _viewModel.currentClothes.observe(viewLifecycleOwner){
             binding.textViewMaterialValue.text = it.materialText
