@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="24dp"
+            android:paddingHorizontal="10dp"
             android:background="@drawable/bg_description_small"
             android:fontFamily="@font/anonymous_pro_bold"
             android:gravity="center"
@@ -40,7 +41,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageModel"
             app:layout_constraintStart_toStartOf="@+id/imageModel"
-            tools:text="Ретро" />
+            tools:text="Официальный" />
 
         <TextView
             android:id="@+id/nameText"

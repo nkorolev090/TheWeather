@@ -30,7 +30,11 @@
         android:id="@+id/clothesRecommendationsFragment"
         android:name="com.example.theweather.ui.clothes.clothesRecommendations.ClothesRecommendationsFragment"
         android:label="fragment_clothes_recommendations"
-        tools:layout="@layout/fragment_clothes_recommendations" />
+        tools:layout="@layout/fragment_clothes_recommendations" >
+        <action
+            android:id="@+id/action_clothesRecommendationsFragment_to_clothesRecommendationsListFragment"
+            app:destination="@id/clothesRecommendationsListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/clothesRecommendationsListFragment"
         android:name="com.example.theweather.ui.clothes.clothesRecommendationsList.ClothesRecommendationsListFragment"
@@ -39,6 +43,9 @@
         <action
             android:id="@+id/action_clothesRecommendationsListFragment_to_navigation_clothes"
             app:destination="@id/navigation_clothes" />
+        <action
+            android:id="@+id/action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment"
+            app:destination="@id/clothesRecommendationsFragment" />
     </fragment>
 
 </navigation>

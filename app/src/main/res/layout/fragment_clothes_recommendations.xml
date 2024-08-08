@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_back"
+        android:id="@+id/backBtn"
         style="@android:style/Widget.Button"
         android:layout_width="match_parent"
         android:layout_height="65dp"
@@ -120,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/button_back"
+        app:layout_constraintBottom_toTopOf="@id/leftImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewName">

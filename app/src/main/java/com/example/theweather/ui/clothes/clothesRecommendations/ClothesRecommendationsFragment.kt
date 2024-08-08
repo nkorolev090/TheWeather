@@ -39,7 +39,7 @@ class ClothesRecommendationsFragment : Fragment() {
 //            _viewModel.navToClothesFragment()
 //        }
 
-        binding.buttonBack.text = _viewModel.backBtnText
+        binding.backBtn.text = _viewModel.backBtnText
         binding.textViewStyle.text = _viewModel.styleText
         binding.textViewSeason.text = _viewModel.seasonText
         binding.textViewMaterial.text = _viewModel.materialText

@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.databinding.FragmentClothesBinding
 import com.example.theweather.databinding.FragmentClothesRecommendationsBinding
@@ -31,16 +33,23 @@ class ClothesRecommendationsListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        MAIN.hideBottomNavigation()
+        MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.white)
+        MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.white)
+
         _binding = FragmentClothesRecommendationsListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         binding.clothesRecommendationsRecycle.layoutManager = LinearLayoutManager(context)
         _viewModel.clothesList.observe(viewLifecycleOwner){
             binding.clothesRecommendationsRecycle.adapter = ClothesRecommendationRecyclerAdapter(it){ item ->
-                {}
-
+                _viewModel.navToClothesRecommendationsDetails(item)
             }
         }
+
+        binding.appBar.setTitleText(_viewModel.titleText)
+        binding.appBar.setLeftOnClickListener(View.OnClickListener { _viewModel.navToClothes() })
+
         return root
     }
 }

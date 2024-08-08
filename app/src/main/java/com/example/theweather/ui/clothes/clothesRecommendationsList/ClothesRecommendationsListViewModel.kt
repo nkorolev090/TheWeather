@@ -4,7 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.theweather.MAIN
+import com.example.theweather.R
 import com.example.theweather.ui.clothes.clothesRecommendations.toClothesUI
+import com.example.theweather.ui.clothes.models.ClothesTypeUI
 import com.example.theweather.ui.clothes.models.ClothesUI
 import com.example.theweather.ui.home.models.ErrorUI
 import com.example.weatherdata.clothes.models.Clothes
@@ -29,6 +32,9 @@ class ClothesRecommendationsListViewModel @Inject constructor(
     var errorUI = MutableLiveData<ErrorUI>().apply {
         value = ErrorUI()
     }
+
+    var titleText = "Верхняя одежда"
+
     init {
         getClothesList()
     }
@@ -60,5 +66,13 @@ class ClothesRecommendationsListViewModel @Inject constructor(
                 Log.i("VM", "InProgress")
             }
         }
+    }
+
+    public fun navToClothesRecommendationsDetails(clothes: ClothesUI){
+        MAIN.navController.navigate(R.id.action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment)
+    }
+
+    public fun navToClothes(){
+        MAIN.navController.navigate(R.id.action_clothesRecommendationsListFragment_to_navigation_clothes)
     }
 }
