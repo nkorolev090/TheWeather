@@ -1,15 +1,18 @@
 package com.example.theweather.ui.clothes.clothesRecommendations
 
+import android.os.Build
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.databinding.FragmentClothesRecommendationsBinding
+import com.example.theweather.ui.clothes.models.ClothesUI
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +26,7 @@ class ClothesRecommendationsFragment : Fragment() {
 
     private val _viewModel: ClothesRecommendationsViewModel by viewModels()
 
+    @RequiresApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,6 +36,15 @@ class ClothesRecommendationsFragment : Fragment() {
         MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.clothesRecommendationsColor)
         MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.white)
 
+        val value = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requireArguments().getSerializable("clothes", ClothesUI::class.java)
+        } else {
+            TODO("VERSION.SDK_INT < TIRAMISU")
+        };
+
+        if(value != null){
+            _viewModel.currentClothesUI = value
+        }
         _binding = FragmentClothesRecommendationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -44,12 +57,12 @@ class ClothesRecommendationsFragment : Fragment() {
         binding.textViewSeason.text = _viewModel.seasonText
         binding.textViewMaterial.text = _viewModel.materialText
 
-        _viewModel.currentClothes.observe(viewLifecycleOwner){
-            binding.textViewMaterialValue.text = it.materialText
-            binding.textViewName.text = it.nameText
-            binding.textViewSeasonValue.text = it.seasonText
-            binding.textViewStyleValue.text = it.styleText
-        }
+        //_viewModel.currentClothes.observe(viewLifecycleOwner){
+            binding.textViewMaterialValue.text = _viewModel.currentClothesUI.materialText
+            binding.textViewName.text = _viewModel.currentClothesUI.nameText
+            binding.textViewSeasonValue.text = _viewModel.currentClothesUI.seasonText
+            binding.textViewStyleValue.text = _viewModel.currentClothesUI.styleText
+        //}
 
         return root
     }

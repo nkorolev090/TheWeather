@@ -57,7 +57,6 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
     kapt(libs.dagger.hilt.compiler)
-
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation(libs.kotlinx.serialization.json)
 

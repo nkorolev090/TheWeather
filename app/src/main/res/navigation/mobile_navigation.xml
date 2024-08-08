@@ -49,7 +49,11 @@
             app:destination="@id/navigation_clothes" />
         <action
             android:id="@+id/action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment"
-            app:destination="@id/clothesRecommendationsFragment" />
+            app:destination="@id/clothesRecommendationsFragment" >
+            <argument
+                android:name="clothes"
+                app:argType="com.example.theweather.ui.clothes.models.ClothesUI" />
+        </action>
     </fragment>
 
 </navigation>

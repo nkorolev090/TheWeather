@@ -33,6 +33,14 @@ class ClothesRecommendationsViewModel @Inject constructor(
     private var clothesList = MutableLiveData<List<ClothesUI>>().apply {
         value = null
     }
+    public var currentClothesUI = ClothesUI(
+    colorText = "-",
+    nameText = "-",
+    materialText = "-",
+    seasonText = "-",
+    sizeText = "-",
+    styleText = "-",
+    )
 
     public var currentClothes = MutableLiveData<ClothesUI>().apply {
         value = ClothesUI(

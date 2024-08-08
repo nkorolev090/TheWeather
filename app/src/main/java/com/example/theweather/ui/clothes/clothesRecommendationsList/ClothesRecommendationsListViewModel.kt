@@ -1,6 +1,7 @@
 package com.example.theweather.ui.clothes.clothesRecommendationsList
 
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -73,7 +74,8 @@ class ClothesRecommendationsListViewModel @Inject constructor(
     }
 
     public fun navToClothesRecommendationsDetails(clothes: ClothesUI){
-        MAIN.navController.navigate(R.id.action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment)
+        val bundle = bundleOf("clothes" to clothes)
+        MAIN.navController.navigate(R.id.action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment, bundle)
     }
 
     public fun navToClothes(){
