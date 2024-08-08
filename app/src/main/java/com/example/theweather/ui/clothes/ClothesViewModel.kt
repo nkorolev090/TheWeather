@@ -1,7 +1,9 @@
 package com.example.theweather.ui.clothes
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.clothesdb.models.enums.MainTypeEnumDBO
 import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.ui.clothes.models.ClothesTypeUI
@@ -16,9 +18,9 @@ class ClothesViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _clothesTypes: List<ClothesTypeUI> = listOf(
-        ClothesTypeUI("Верх", R.drawable.clothes_type_top),
-        ClothesTypeUI("Низ", R.drawable.clothes_type_low),
-        ClothesTypeUI("Обувь", R.drawable.clothes_type_shoes2)
+        ClothesTypeUI("Верх", R.drawable.clothes_type_top, MainTypeEnumDBO.HIGH),
+        ClothesTypeUI("Низ", R.drawable.clothes_type_low, MainTypeEnumDBO.LOW),
+        ClothesTypeUI("Обувь", R.drawable.clothes_type_shoes2, MainTypeEnumDBO.SHOES)
     )
     var clothesTypes = MutableLiveData<List<ClothesTypeUI>>().apply {
         value = _clothesTypes
@@ -60,6 +62,7 @@ class ClothesViewModel @Inject constructor(
 //    }
 
     public fun navToClothesRecommendations(clothesType: ClothesTypeUI){
-        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment)
+        val bundle = bundleOf("clothesType" to clothesType.clothesType.toString())
+        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment, bundle)
     }
 }

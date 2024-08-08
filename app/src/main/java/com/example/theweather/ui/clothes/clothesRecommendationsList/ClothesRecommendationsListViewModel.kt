@@ -1,8 +1,10 @@
 package com.example.theweather.ui.clothes.clothesRecommendationsList
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.theweather.MAIN
 import com.example.theweather.R
@@ -25,6 +27,8 @@ class ClothesRecommendationsListViewModel @Inject constructor(
     private val useCase: Provider<ClothesUseCase>
 ) : ViewModel() {
 
+    var clothesTypeUI = "-"
+
     var clothesList = MutableLiveData<List<ClothesUI>>().apply {
         value = emptyList()
     }
@@ -33,7 +37,7 @@ class ClothesRecommendationsListViewModel @Inject constructor(
         value = ErrorUI()
     }
 
-    var titleText = "Верхняя одежда"
+    var titleText = "-"
 
     init {
         getClothesList()

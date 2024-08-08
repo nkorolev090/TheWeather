@@ -16,6 +16,7 @@ import com.example.theweather.databinding.FragmentClothesRecommendationsBinding
 import com.example.theweather.databinding.FragmentClothesRecommendationsListBinding
 import com.example.theweather.ui.clothes.ClothesTypesRecyclerAdapter
 import com.example.theweather.ui.clothes.clothesRecommendations.ClothesRecommendationsViewModel
+import com.example.theweather.ui.clothes.models.ClothesTypeUI
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,6 +38,8 @@ class ClothesRecommendationsListFragment : Fragment() {
         MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.white)
         MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.white)
 
+        _viewModel.clothesTypeUI = requireArguments().getString("clothesType").toString()
+        _viewModel.titleText = requireArguments().getString("clothesType").toTitleText()
         _binding = FragmentClothesRecommendationsListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -51,5 +54,13 @@ class ClothesRecommendationsListFragment : Fragment() {
         binding.appBar.setLeftOnClickListener(View.OnClickListener { _viewModel.navToClothes() })
 
         return root
+    }
+}
+public fun String?.toTitleText(): String{
+    return when(this){
+        "LOW" -> "Одежда: Низ"
+        "HIGH" -> "Одежда: Верх"
+        "SHOES" -> "Обувь"
+        else -> "-"
     }
 }

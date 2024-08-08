@@ -18,7 +18,11 @@
         tools:layout="@layout/fragment_clothes" >
         <action
             android:id="@+id/action_navigation_clothes_to_clothesRecommendationsListFragment"
-            app:destination="@id/clothesRecommendationsListFragment" />
+            app:destination="@id/clothesRecommendationsListFragment" >
+            <argument
+                android:name="clothesType"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
