@@ -2,15 +2,13 @@ package com.example.theweather.ui.clothes.clothesRecommendationsList
 
 import android.util.Log
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.example.clothesdb.models.enums.MainTypeEnumDBO
 import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.ui.clothes.clothesRecommendations.toClothesUI
-import com.example.theweather.ui.clothes.models.ClothesTypeUI
 import com.example.theweather.ui.clothes.models.ClothesUI
 import com.example.theweather.ui.home.models.ErrorUI
 import com.example.weatherdata.clothes.models.Clothes
@@ -28,7 +26,7 @@ class ClothesRecommendationsListViewModel @Inject constructor(
     private val useCase: Provider<ClothesUseCase>
 ) : ViewModel() {
 
-    var clothesTypeUI = "-"
+    lateinit var clothesType: MainTypeEnumDBO
 
     var clothesList = MutableLiveData<List<ClothesUI>>().apply {
         value = emptyList()
@@ -40,13 +38,10 @@ class ClothesRecommendationsListViewModel @Inject constructor(
 
     var titleText = "-"
 
-    init {
-        getClothesList()
-    }
-    private fun getClothesList(){
+    public fun loadClothesList(){
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val response = useCase.get().getClothesListUseCase()
+                val response = useCase.get().getClothesByMainTypeUseCase(clothesType)
 
                 Log.d("VM","Response: ")
                 setupFields(response)

@@ -79,6 +79,27 @@ class ClothesRepository @Inject constructor(
        }
     }
 
+    suspend fun getClothesByMainType(mainType: MainTypeEnumDBO): List<Clothes>{
+        var clothes = database.clothesDao.getAll()
+        if(clothes.isEmpty()){
+            for(item in _clothesForDb){
+                insertClothes(item)
+            }
+        }
+        //////////////////////////////////
+
+        var allClothes = database.clothesDao.getAll().map {
+            var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
+            var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
+            if(tempMode == null || clothesType == null){
+                return emptyList()
+            }
+            it.toClothes(tempMode, clothesType)
+        }
+
+        return allClothes.filter { clothes -> clothes.clothesType.mainType == mainType }
+    }
+
     suspend fun insertClothes(clothes: Clothes) {
         var clothesTypeId = insertClothesType(clothes.clothesType)
         var tempModeId = insertTempMode(clothes.tempMode)

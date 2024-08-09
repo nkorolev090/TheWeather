@@ -39,6 +39,7 @@ class ClothesRecommendationsFragment : Fragment() {
         val value = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requireArguments().getSerializable("clothes", ClothesUI::class.java)
         } else {
+            //(ClothesUI)requireArguments().getSerializable("clothes")
             TODO("VERSION.SDK_INT < TIRAMISU")
         };
 

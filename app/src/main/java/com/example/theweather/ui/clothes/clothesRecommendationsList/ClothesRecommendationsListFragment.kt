@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.clothesdb.models.enums.MainTypeEnumDBO
 import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.databinding.FragmentClothesBinding
@@ -38,8 +39,11 @@ class ClothesRecommendationsListFragment : Fragment() {
         MAIN.window.statusBarColor = ContextCompat.getColor(MAIN, R.color.white)
         MAIN.window.navigationBarColor = ContextCompat.getColor(MAIN,  R.color.white)
 
-        _viewModel.clothesTypeUI = requireArguments().getString("clothesType").toString()
-        _viewModel.titleText = requireArguments().getString("clothesType").toTitleText()
+        val parameter = requireArguments().getString("clothesType")
+        _viewModel.clothesType = parameter.toMainType()
+        _viewModel.titleText = parameter.toTitleText()
+        _viewModel.loadClothesList()
+
         _binding = FragmentClothesRecommendationsListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -56,6 +60,17 @@ class ClothesRecommendationsListFragment : Fragment() {
         return root
     }
 }
+
+public fun String?.toMainType(): MainTypeEnumDBO {
+return when(this){
+    "HIGH" -> MainTypeEnumDBO.HIGH
+    "LOW" -> MainTypeEnumDBO.LOW
+    "SHOES" -> MainTypeEnumDBO.SHOES
+    else -> throw Exception()
+}
+
+}
+
 public fun String?.toTitleText(): String{
     return when(this){
         "LOW" -> "Одежда: Низ"
