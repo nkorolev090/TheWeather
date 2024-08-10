@@ -1,5 +1,6 @@
 package com.example.weatherdata.clothes.repository
 
+import android.util.Log
 import com.example.clothesdb.ClothesDatabase
 import com.example.clothesdb.models.ClothesDBO
 import com.example.clothesdb.models.ClothesTypeDBO
@@ -11,6 +12,7 @@ import com.example.clothesdb.models.enums.SubTypeEnumDBO
 import com.example.weatherdata.clothes.models.Clothes
 import com.example.weatherdata.clothes.models.ClothesType
 import com.example.weatherdata.clothes.models.TempMode
+import com.example.weatherdata.weather.models.MainEnum
 import javax.inject.Inject
 
 class ClothesRepository @Inject constructor(
@@ -23,7 +25,7 @@ class ClothesRepository @Inject constructor(
             name = "test name1",
             material = "material",
             size = "size1",
-            tempMode = TempMode(0, 0.0, 10.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 0.0, 20.0, MainEnum.CLOUDS),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season1"
         ),
@@ -33,7 +35,7 @@ class ClothesRepository @Inject constructor(
             name = "test name2",
             material = "material2",
             size = "size2",
-            tempMode = TempMode(0, 10.0, 20.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season2"
         ),
@@ -43,7 +45,7 @@ class ClothesRepository @Inject constructor(
             name = "test name3",
             material = "material3",
             size = "size3",
-            tempMode = TempMode(0, -30.0, 10.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, -30.0, 10.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season3"
         ),
@@ -53,7 +55,7 @@ class ClothesRepository @Inject constructor(
             name = "test name4",
             material = "material4",
             size = "size4",
-            tempMode = TempMode(0, 20.0, 40.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 20.0, 40.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season4"
         ),
@@ -63,7 +65,7 @@ class ClothesRepository @Inject constructor(
             name = "test name5",
             material = "material",
             size = "size5",
-            tempMode = TempMode(0, 0.0, 15.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 0.0, 15.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season5"
         ),
@@ -73,7 +75,7 @@ class ClothesRepository @Inject constructor(
             name = "test name6",
             material = "material6",
             size = "size6",
-            tempMode = TempMode(0, 10.0, 30.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 10.0, 30.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season6"
         ),
@@ -83,7 +85,7 @@ class ClothesRepository @Inject constructor(
             name = "test name7",
             material = "material7",
             size = "size7",
-            tempMode = TempMode(0, -30.0, 10.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 0.0, 300.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season7"
         ),
@@ -93,22 +95,13 @@ class ClothesRepository @Inject constructor(
             name = "test name8",
             material = "material8",
             size = "size8",
-            tempMode = TempMode(0, 20.0, 30.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 20.0, 30.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season8"
         )
     )
 
     suspend fun getAllClothes(): List<Clothes> {
-        //////////////////////////////////for mock data
-        var clothes = database.clothesDao.getAll()
-        if(clothes.isEmpty()){
-            for(item in _clothesForDb){
-                insertClothes(item)
-            }
-        }
-        //////////////////////////////////
-
        return database.clothesDao.getAll().map {
            var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
            var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
@@ -119,15 +112,15 @@ class ClothesRepository @Inject constructor(
        }
     }
 
-    suspend fun getClothesByMainType(mainType: MainTypeEnumDBO): List<Clothes>{
-        var clothes = database.clothesDao.getAll()
-        if(clothes.isEmpty()){
-            for(item in _clothesForDb){
-                insertClothes(item)
-            }
+    suspend fun restoreClothesDatabase(){
+        Log.d("ClothesRepo", "Restore")
+        database.clothesDao.clean()
+        for(item in _clothesForDb){
+            insertClothes(item)
         }
-        //////////////////////////////////
+    }
 
+    suspend fun getClothesByMainType(mainType: MainTypeEnumDBO): List<Clothes>{
         var allClothes = database.clothesDao.getAll().map {
             var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
             var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
@@ -175,8 +168,16 @@ private fun TempMode.toTempModeDBO(): TempModeDBO {
         id = id,
         low = low,
         high = high,
-        main = main
+        main = main.toMainEnumDBO()
     )
+}
+
+private fun MainEnum.toMainEnumDBO(): MainEnumDBO {
+    return when(this){
+        MainEnum.CLEAR -> MainEnumDBO.CLEAR
+        MainEnum.CLOUDS -> MainEnumDBO.CLOUDS
+        MainEnum.RAIN -> MainEnumDBO.RAIN
+    }
 }
 
 private fun ClothesType.toClothesTypeDBO(): ClothesTypeDBO {
@@ -220,6 +221,14 @@ private fun TempModeDBO.toTempMode(): TempMode {
         id = id,
         low = low,
         high = high,
-        main = main
+        main = main.toMainEnum()
     )
+}
+
+private fun MainEnumDBO.toMainEnum(): MainEnum {
+    return when(this){
+        MainEnumDBO.CLEAR -> MainEnum.CLEAR
+        MainEnumDBO.CLOUDS -> MainEnum.CLOUDS
+        MainEnumDBO.RAIN -> MainEnum.RAIN
+    }
 }

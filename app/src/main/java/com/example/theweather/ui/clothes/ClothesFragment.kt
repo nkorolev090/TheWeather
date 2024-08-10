@@ -38,6 +38,7 @@ class ClothesFragment : Fragment() {
 
         binding.clothesTypesRecycle.layoutManager = LinearLayoutManager(context)
 
+        binding.appBar.setRightOnClickListener(View.OnClickListener { _viewModel.onBtnRestoreClick() })
         _viewModel.clothesTypes.observe(viewLifecycleOwner){
             binding.clothesTypesRecycle.adapter = ClothesTypesRecyclerAdapter(it){ item ->
                 _viewModel.navToClothesRecommendations(item)

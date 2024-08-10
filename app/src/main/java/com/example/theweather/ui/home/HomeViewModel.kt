@@ -59,6 +59,7 @@ class HomeViewModel @Inject constructor(
                 var notNullData = checkNotNull(response.data)
                 weatherUI.postValue(notNullData.toWeatherUI())
                 MAIN.currentTemp = notNullData.temperature
+                MAIN.currentMainEnum = notNullData.main
                     Log.d("VM", "Success: temp " + response.data?.temperature.toString())
             }
 

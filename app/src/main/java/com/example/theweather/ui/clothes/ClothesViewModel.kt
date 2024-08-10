@@ -1,20 +1,26 @@
 package com.example.theweather.ui.clothes
 
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.clothesdb.models.enums.MainTypeEnumDBO
 import com.example.theweather.MAIN
 import com.example.theweather.R
 import com.example.theweather.ui.clothes.models.ClothesTypeUI
 import com.example.weatherdata.clothes.repository.ClothesRepository
+import com.example.weatherdata.clothes.useCase.ClothesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Provider
 
 @HiltViewModel
 class ClothesViewModel @Inject constructor(
-//    private val repository: Provider<ClothesRepository>
+    private val useCase: Provider<ClothesUseCase>
 ) : ViewModel() {
 
     private var _clothesTypes: List<ClothesTypeUI> = listOf(
@@ -61,6 +67,14 @@ class ClothesViewModel @Inject constructor(
 //        }
 //    }
 
+    fun onBtnRestoreClick(){
+        Log.d("ClothesVM", "Restore")
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                useCase.get().restoreClothesUseCase()
+            }
+        }
+    }
     public fun navToClothesRecommendations(clothesType: ClothesTypeUI){
         val bundle = bundleOf("clothesType" to clothesType.clothesType.toString())
         MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment, bundle)

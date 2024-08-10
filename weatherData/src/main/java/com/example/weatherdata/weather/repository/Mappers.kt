@@ -1,5 +1,6 @@
 package com.example.weatherdata.weather.repository
 
+import android.util.Log
 import com.example.data.models.ResponseDTO
 import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
@@ -21,12 +22,13 @@ internal fun WeatherDBO.toWeather() : Weather{
 }
 
 private fun String.toMainEnum(): MainEnum {
+    Log.d("mapper", this)
     return when(this){
-        "clear" -> {
+        "Clear" -> {
             MainEnum.CLEAR
         }
-        "clouds" -> {
-            MainEnum.CLEAR
+        "Clouds" -> {
+            MainEnum.CLOUDS
         }
         else -> {MainEnum.RAIN}
     }

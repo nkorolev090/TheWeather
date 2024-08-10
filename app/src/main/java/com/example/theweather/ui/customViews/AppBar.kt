@@ -47,7 +47,7 @@ class AppBar(context: Context, attrs: AttributeSet) : ConstraintLayout(context, 
     }
 
     fun setRightOnClickListener(onClickListener: OnClickListener){
-        leftImageView.setOnClickListener(onClickListener)
+        rightImageView.setOnClickListener(onClickListener)
     }
 
     fun setTitleText(text: String){

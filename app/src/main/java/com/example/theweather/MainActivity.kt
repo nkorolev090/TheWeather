@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.theweather.databinding.ActivityMainBinding
+import com.example.weatherdata.weather.models.MainEnum
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var navView: BottomNavigationView
     var currentTemp: Double = 0.0
-
+    var currentMainEnum: MainEnum = MainEnum.RAIN
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -61,6 +61,6 @@ private fun MainEnum.toResource(): Int {
 return when(this){
     MainEnum.RAIN -> R.drawable.rainy_weather
     MainEnum.CLOUDS -> R.drawable.cloud_weather
-    MainEnum.CLEAR -> R.drawable.cloud_weather
+    MainEnum.CLEAR -> R.drawable.clear_weather
 }
 }
