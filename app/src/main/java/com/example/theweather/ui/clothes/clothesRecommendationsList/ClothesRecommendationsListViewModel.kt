@@ -41,7 +41,7 @@ class ClothesRecommendationsListViewModel @Inject constructor(
     public fun loadClothesList(){
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val response = useCase.get().getClothesByMainTypeUseCase(clothesType)
+                val response = useCase.get().getClothesByMainTypeUseCase(clothesType, MAIN.currentTemp)
 
                 Log.d("VM","Response: ")
                 setupFields(response)

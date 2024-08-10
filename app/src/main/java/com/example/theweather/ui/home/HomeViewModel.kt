@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.theweather.MAIN
 import com.example.theweather.ui.home.models.ErrorUI
 import com.example.theweather.ui.home.models.WeatherUI
 import com.example.theweather.ui.home.models.toWeatherUI
@@ -57,7 +58,8 @@ class HomeViewModel @Inject constructor(
             is RequestResult.Success -> {
                 var notNullData = checkNotNull(response.data)
                 weatherUI.postValue(notNullData.toWeatherUI())
-                Log.d("VM", "Success: temp " + response.data?.temperature.toString())
+                MAIN.currentTemp = notNullData.temperature
+                    Log.d("VM", "Success: temp " + response.data?.temperature.toString())
             }
 
             is RequestResult.Error -> {

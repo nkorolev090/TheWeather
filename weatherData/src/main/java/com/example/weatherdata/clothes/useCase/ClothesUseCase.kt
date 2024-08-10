@@ -19,12 +19,13 @@ class ClothesUseCase @Inject constructor(
         }
     }
 
-    public suspend fun getClothesByMainTypeUseCase(mainType: MainTypeEnumDBO): RequestResult<List<Clothes>>{
+    public suspend fun getClothesByMainTypeUseCase(mainType: MainTypeEnumDBO, temp: Double): RequestResult<List<Clothes>>{
         val data = repository.get().getClothesByMainType(mainType)
         return if (data.isEmpty()){
             RequestResult.Error(message = "Empty response from bd")
         }else{
-            RequestResult.Success(data)
+            var filteredValue = data.filter { clothes -> clothes.tempMode.low < temp && clothes.tempMode.high > temp }
+            RequestResult.Success(filteredValue)
         }
     }
 }

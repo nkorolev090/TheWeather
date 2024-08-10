@@ -23,7 +23,7 @@ class ClothesRepository @Inject constructor(
             name = "test name1",
             material = "material",
             size = "size1",
-            tempMode = TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 0.0, 10.0, MainEnumDBO.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season1"
         ),
@@ -33,7 +33,7 @@ class ClothesRepository @Inject constructor(
             name = "test name2",
             material = "material2",
             size = "size2",
-            tempMode = TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 10.0, 20.0, MainEnumDBO.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season2"
         ),
@@ -43,7 +43,7 @@ class ClothesRepository @Inject constructor(
             name = "test name3",
             material = "material3",
             size = "size3",
-            tempMode = TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, -30.0, 10.0, MainEnumDBO.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
             season = "season3"
         ),
@@ -53,9 +53,49 @@ class ClothesRepository @Inject constructor(
             name = "test name4",
             material = "material4",
             size = "size4",
-            tempMode = TempMode(0, 0.0, 0.0, MainEnumDBO.CLEAR),
+            tempMode = TempMode(0, 20.0, 40.0, MainEnumDBO.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
             season = "season4"
+        ),
+        Clothes(
+            id = 0,
+            color = "color5",
+            name = "test name5",
+            material = "material",
+            size = "size5",
+            tempMode = TempMode(0, 0.0, 15.0, MainEnumDBO.CLEAR),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
+            season = "season5"
+        ),
+        Clothes(
+            id = 0,
+            color = "color6",
+            name = "test name6",
+            material = "material6",
+            size = "size6",
+            tempMode = TempMode(0, 10.0, 30.0, MainEnumDBO.CLEAR),
+            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
+            season = "season6"
+        ),
+        Clothes(
+            id = 0,
+            color = "color7",
+            name = "test name7",
+            material = "material7",
+            size = "size7",
+            tempMode = TempMode(0, -30.0, 10.0, MainEnumDBO.CLEAR),
+            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
+            season = "season7"
+        ),
+        Clothes(
+            id = 0,
+            color = "color8",
+            name = "test name8",
+            material = "material8",
+            size = "size8",
+            tempMode = TempMode(0, 20.0, 30.0, MainEnumDBO.CLEAR),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
+            season = "season8"
         )
     )
 
