@@ -36,7 +36,7 @@ class ClothesRepository @Inject constructor(
             material = "material2",
             size = "size2",
             tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.SWEATER, 0, StyleEnumDBO.SPORT),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.SWEATER, 0, StyleEnumDBO.SPORT),
             season = "season2"
         ),
         Clothes(
@@ -46,7 +46,7 @@ class ClothesRepository @Inject constructor(
             material = "material3",
             size = "size3",
             tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.HOODIE, 0, StyleEnumDBO.CASUAL),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.HOODIE, 0, StyleEnumDBO.CASUAL),
             season = "season3"
         ),
         Clothes(
@@ -66,7 +66,7 @@ class ClothesRepository @Inject constructor(
             material = "material",
             size = "size5",
             tempMode = TempMode(0, 0.0, 10.0, MainEnum.SNOW),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.JEANS, 0, StyleEnumDBO.STREET),
+            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.JEANS, 0, StyleEnumDBO.STREET),
             season = "season5"
         ),
         Clothes(
@@ -86,7 +86,7 @@ class ClothesRepository @Inject constructor(
             material = "material7",
             size = "size7",
             tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
+            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
             season = "season7"
         ),
         Clothes(
@@ -96,7 +96,7 @@ class ClothesRepository @Inject constructor(
             material = "material8",
             size = "size8",
             tempMode = TempMode(0, 15.0, 25.0, MainEnum.SUNNY),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.DRESS, 0, StyleEnumDBO.CLASSIC),
+            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.DRESS, 0, StyleEnumDBO.CLASSIC),
             season = "season8"
         )
               Clothes(
@@ -116,7 +116,7 @@ class ClothesRepository @Inject constructor(
             material = "material7",
             size = "size7",
             tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.HAT, 0, StyleEnumDBO.BOHO),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.HAT, 0, StyleEnumDBO.BOHO),
             season = "season10"
         ),
               Clothes(
@@ -126,7 +126,7 @@ class ClothesRepository @Inject constructor(
             material = "material7",
             size = "size7",
             tempMode = TempMode(0, 0.0, 10.0, MainEnum.CLOUDS),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SCARF, 0, StyleEnumDBO.CASUAL),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.SCARF, 0, StyleEnumDBO.CASUAL),
             season = "season11"
         ),
         //       Clothes(
