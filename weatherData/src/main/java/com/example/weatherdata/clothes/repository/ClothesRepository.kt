@@ -101,74 +101,74 @@ class ClothesRepository @Inject constructor(
         )
               Clothes(
             id = 0,
-            color = "color7",
-            name = "test name7",
-            material = "material7",
-            size = "size7",
+            color = "color9",
+            name = "test name9",
+            material = "material9",
+            size = "size9",
             tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLOUDS),
             clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SHOES, 0, StyleEnumDBO.SPORT),
             season = "season9"
         ),
               Clothes(
             id = 0,
-            color = "color7",
-            name = "test name7",
-            material = "material7",
-            size = "size7",
+            color = "color10",
+            name = "test name10",
+            material = "material10",
+            size = "size10",
             tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.HAT, 0, StyleEnumDBO.BOHO),
             season = "season10"
         ),
               Clothes(
             id = 0,
-            color = "color7",
-            name = "test name7",
-            material = "material7",
-            size = "size7",
+            color = "color11",
+            name = "test name11",
+            material = "material11",
+            size = "size11",
             tempMode = TempMode(0, 0.0, 10.0, MainEnum.CLOUDS),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.SCARF, 0, StyleEnumDBO.CASUAL),
             season = "season11"
         ),
-        //       Clothes(
-        //     id = 0,
-        //     color = "color7",
-        //     name = "test name7",
-        //     material = "material7",
-        //     size = "size7",
-        //     tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-        //     clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
-        //     season = "season12"
-        // ),
-        //       Clothes(
-        //     id = 0,
-        //     color = "color7",
-        //     name = "test name7",
-        //     material = "material7",
-        //     size = "size7",
-        //     tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-        //     clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
-        //     season = "season13"
-        // ),
-        //       Clothes(
-        //     id = 0,
-        //     color = "color7",
-        //     name = "test name7",
-        //     material = "material7",
-        //     size = "size7",
-        //     tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-        //     clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
-        //     season = "season14"
-        // ),
-        //       Clothes(
-        //     id = 0,
-        //     color = "color7",
-        //     name = "test name7",
-        //     material = "material7",
-        //     size = "size7",
-        //     tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
-        //     clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
-        //     season = "season15"
-        // ),
+              Clothes(
+            id = 0,
+            color = "color12",
+            name = "test name12",
+            material = "material12",
+            size = "size12",
+            tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.Cardigan, 0, StyleEnumDBO.CASUAL),
+            season = "season12"
+        ),
+              Clothes(
+            id = 0,
+            color = "color13",
+            name = "test name13",
+            material = "material13",
+            size = "size13",
+            tempMode = TempMode(0, 5.0, 15.0, MainEnum.SNOW),
+            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.Scarf, 0, StyleEnumDBO.CASUAL),
+            season = "season13"
+        ),
+              Clothes(
+            id = 0,
+            color = "color14",
+            name = "test name14",
+            material = "material14",
+            size = "size14",
+            tempMode = TempMode(0, 15.0, 25.0, MainEnum.CLOUDS),
+            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.Slippers, 0, StyleEnumDBO.CASUAL),
+            season = "season14"
+        ),
+              Clothes(
+            id = 0,
+            color = "color15",
+            name = "test name15",
+            material = "material15",
+            size = "size15",
+            tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLOUDS),
+            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.Loafers, 0, StyleEnumDBO.CLASSIC),
+            season = "season15"
+        ),
     )
 
     suspend fun getAllClothes(): List<Clothes> {
