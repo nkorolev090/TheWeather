@@ -7,4 +7,16 @@ enum class StyleEnumDBO {
     OFFICIAL,
     @ColumnInfo("sport")
     SPORT,
+    @ColumnInfo("casual")
+    CASUAL,
+    @ColumnInfo("boho")
+    BOHO,
+    @ColumnInfo("minimalism")
+    MINIMALISM,
+    @ColumnInfo("street")
+    STREET,
+    @ColumnInfo("ethno")
+    ETHNO,
+    @ColumnInfo("retro")
+    RETRO,
 }
