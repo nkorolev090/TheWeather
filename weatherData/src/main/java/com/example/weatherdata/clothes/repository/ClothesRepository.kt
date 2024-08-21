@@ -45,7 +45,7 @@ class ClothesRepository @Inject constructor(
             name = "test name3",
             material = "material3",
             size = "size3",
-            tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLEAR),
+            tempMode = TempMode(0, 5.0, 15.0, MainEnum.RAINY),
             clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.HOODIE, 0, StyleEnumDBO.CASUAL),
             season = "season3"
         ),
@@ -75,7 +75,7 @@ class ClothesRepository @Inject constructor(
             name = "test name6",
             material = "material6",
             size = "size6",
-            tempMode = TempMode(0, 10.0, 20.0, MainEnum.SUNNY),
+            tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLOUDS),
             clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.TROUSERS, 0, StyleEnumDBO.CASUAL),
             season = "season6"
         ),
@@ -85,7 +85,7 @@ class ClothesRepository @Inject constructor(
             name = "test name7",
             material = "material7",
             size = "size7",
-            tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLOUDS),
+            tempMode = TempMode(0, 5.0, 15.0, MainEnum.CLEAR),
             clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.SKIRT, 0, StyleEnumDBO.BOHO),
             season = "season7"
         ),
