@@ -20,26 +20,36 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: BottomNavigationView
     var currentTemp: Double = 0.0
     var currentMainEnum: MainEnum = MainEnum.RAIN
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        MAIN = this
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        navView= binding.navView
-
+        navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
 
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.helloFragment -> {
+                    navView.visibility = View.GONE
+                }
+                else -> {
+                    navView.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
-    public fun hideBottomNavigation(){
+    public fun hideBottomNavigation() {
         navView.visibility = View.GONE
     }
-    public fun showBottomNavigation(){
+
+    public fun showBottomNavigation() {
         navView.visibility = View.VISIBLE
     }
 }

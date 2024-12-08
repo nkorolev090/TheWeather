@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/helloFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -11,49 +11,107 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_clothes"
-        android:name="com.example.theweather.ui.clothes.ClothesFragment"
-        android:label="@string/title_clothes"
-        tools:layout="@layout/fragment_clothes" >
-        <action
-            android:id="@+id/action_navigation_clothes_to_clothesRecommendationsListFragment"
-            app:destination="@id/clothesRecommendationsListFragment" >
-            <argument
-                android:name="clothesType"
-                app:argType="string" />
-        </action>
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_clothes"-->
+<!--        android:name="com.example.theweather.ui.clothes.ClothesFragment"-->
+<!--        android:label="@string/title_clothes"-->
+<!--        tools:layout="@layout/fragment_clothes" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_navigation_clothes_to_clothesRecommendationsListFragment"-->
+<!--            app:destination="@id/clothesRecommendationsListFragment" >-->
+<!--            <argument-->
+<!--                android:name="clothesType"-->
+<!--                app:argType="string" />-->
+<!--        </action>-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.theweather.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/clothesRecommendationsFragment"
-        android:name="com.example.theweather.ui.clothes.clothesRecommendations.ClothesRecommendationsFragment"
-        android:label="fragment_clothes_recommendations"
-        tools:layout="@layout/fragment_clothes_recommendations" >
+        tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_clothesRecommendationsFragment_to_clothesRecommendationsListFragment"
-            app:destination="@id/clothesRecommendationsListFragment" />
+            android:id="@+id/action_navigation_profile_to_securityFragment"
+            app:destination="@id/securityFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_privateFragment"
+            app:destination="@id/privateFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_subscribeFragment"
+            app:destination="@id/subscribeFragment" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/clothesRecommendationsFragment"-->
+<!--        android:name="com.example.theweather.ui.clothes.clothesRecommendations.ClothesRecommendationsFragment"-->
+<!--        android:label="fragment_clothes_recommendations"-->
+<!--        tools:layout="@layout/fragment_clothes_recommendations" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_clothesRecommendationsFragment_to_clothesRecommendationsListFragment"-->
+<!--            app:destination="@id/clothesRecommendationsListFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/clothesRecommendationsListFragment"-->
+<!--        android:name="com.example.theweather.ui.clothes.clothesRecommendationsList.ClothesRecommendationsListFragment"-->
+<!--        android:label="fragment_clothes_recommendations_list"-->
+<!--        tools:layout="@layout/fragment_clothes_recommendations_list" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_clothesRecommendationsListFragment_to_navigation_clothes"-->
+<!--            app:destination="@id/navigation_clothes" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment"-->
+<!--            app:destination="@id/clothesRecommendationsFragment" >-->
+<!--            <argument-->
+<!--                android:name="clothes"-->
+<!--                app:argType="com.example.theweather.ui.clothes.models.ClothesUI" />-->
+<!--        </action>-->
+<!--    </fragment>-->
+    <fragment
+        android:id="@+id/helloFragment"
+        android:name="com.example.theweather.ui.hellopage.HelloFragment"
+        android:label="fragment_hello"
+        tools:layout="@layout/fragment_hello" >
+        <action
+            android:id="@+id/action_helloFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
-        android:id="@+id/clothesRecommendationsListFragment"
-        android:name="com.example.theweather.ui.clothes.clothesRecommendationsList.ClothesRecommendationsListFragment"
-        android:label="fragment_clothes_recommendations_list"
-        tools:layout="@layout/fragment_clothes_recommendations_list" >
+        android:id="@+id/securityFragment"
+        android:name="com.example.theweather.ui.security.SecurityFragment"
+        android:label="fragment_security"
+        tools:layout="@layout/fragment_security" >
         <action
-            android:id="@+id/action_clothesRecommendationsListFragment_to_navigation_clothes"
-            app:destination="@id/navigation_clothes" />
+            android:id="@+id/action_securityFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/privateFragment"
+        android:name="com.example.theweather.ui.privatepage.PrivateFragment"
+        android:label="fragment_private"
+        tools:layout="@layout/fragment_private" >
         <action
-            android:id="@+id/action_clothesRecommendationsListFragment_to_clothesRecommendationsFragment"
-            app:destination="@id/clothesRecommendationsFragment" >
-            <argument
-                android:name="clothes"
-                app:argType="com.example.theweather.ui.clothes.models.ClothesUI" />
-        </action>
+            android:id="@+id/action_privateFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.theweather.ui.profile.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscribeFragment"
+        android:name="com.example.theweather.ui.sub.SubscribeFragment"
+        android:label="fragment_subscribe"
+        tools:layout="@layout/fragment_subscribe" >
+        <action
+            android:id="@+id/action_subscribeFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
 </navigation>
