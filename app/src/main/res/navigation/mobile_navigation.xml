@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/helloFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -11,19 +11,12 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_clothes"-->
-<!--        android:name="com.example.theweather.ui.clothes.ClothesFragment"-->
-<!--        android:label="@string/title_clothes"-->
-<!--        tools:layout="@layout/fragment_clothes" >-->
-<!--        <action-->
-<!--            android:id="@+id/action_navigation_clothes_to_clothesRecommendationsListFragment"-->
-<!--            app:destination="@id/clothesRecommendationsListFragment" >-->
-<!--            <argument-->
-<!--                android:name="clothesType"-->
-<!--                app:argType="string" />-->
-<!--        </action>-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/navigation_clothes"
+        android:name="com.example.theweather.ui.clothes.ClothesFragment"
+        android:label="@string/title_clothes"
+        tools:layout="@layout/fragment_clothes" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -72,11 +65,7 @@
         android:id="@+id/helloFragment"
         android:name="com.example.theweather.ui.hellopage.HelloFragment"
         android:label="fragment_hello"
-        tools:layout="@layout/fragment_hello" >
-        <action
-            android:id="@+id/action_helloFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
+        tools:layout="@layout/fragment_hello" />
     <fragment
         android:id="@+id/securityFragment"
         android:name="com.example.theweather.ui.security.SecurityFragment"

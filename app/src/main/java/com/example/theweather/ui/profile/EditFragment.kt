@@ -12,7 +12,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.theweather.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditFragment: Fragment() {
     private lateinit var editName: EditText
     private lateinit var editEmail: EditText
@@ -33,30 +35,14 @@ class EditFragment: Fragment() {
         saveButton = view.findViewById(R.id.save_changes_btn)
         sharedPreferences = requireActivity().getSharedPreferences("UserPrefs",Context.MODE_PRIVATE)
 
-        loadUserData()
         backButton.setOnClickListener {
             findNavController().popBackStack()
         }
         saveButton.setOnClickListener {
-            saveUserData()
+
             findNavController().popBackStack()
         }
         return view
     }
-    private fun loadUserData(){
-        val name = sharedPreferences.getString("name", "Melissa Peters")
-        val email = sharedPreferences.getString("email", "email@gmail.com")
-        val password = sharedPreferences.getString("password","password")
-        editName.setText(name)
-        editEmail.setText(email)
-        editPassword.setText(password)
 
-    }
-    private fun saveUserData() {
-        val editor = sharedPreferences.edit()
-        editor.putString("name", editName.text.toString())
-        editor.putString("email", editEmail.text.toString())
-        editor.putString("password", editPassword.text.toString())
-        editor.apply()
-    }
 }

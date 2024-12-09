@@ -13,8 +13,8 @@ class ClothesTypesRecyclerAdapter (private val types: List<ClothesTypeUI>, priva
 .Adapter<ClothesTypesRecyclerAdapter.ClothesTypesViewHolder>() {
 
     class ClothesTypesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.text_title)
-        private val imageView: ImageView = itemView.findViewById(R.id.imageModel)
+        private val titleTextView: TextView = itemView.findViewById(R.id.tvHeading)
+        private val imageView: ImageView = itemView.findViewById(R.id.title_image)
 
         fun bind(item: ClothesTypeUI, onItemClick: (ClothesTypeUI) -> Unit){
             itemView.setOnClickListener{ onItemClick(item)}
@@ -25,7 +25,7 @@ class ClothesTypesRecyclerAdapter (private val types: List<ClothesTypeUI>, priva
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClothesTypesViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.li_clothes_type_item, parent, false)
+            .inflate(R.layout.list_item, parent, false)
         return ClothesTypesViewHolder(itemView)
     }
 

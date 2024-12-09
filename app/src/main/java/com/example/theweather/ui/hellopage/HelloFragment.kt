@@ -8,7 +8,9 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.theweather.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HelloFragment : Fragment() {
 
     override fun onCreateView(
@@ -19,7 +21,7 @@ class HelloFragment : Fragment() {
 
         val buttonContinue: Button = view.findViewById(R.id.buttonContinue)
         buttonContinue.setOnClickListener {
-            findNavController().navigate(R.id.action_helloFragment_to_navigation_home)
+
         }
 
         return view

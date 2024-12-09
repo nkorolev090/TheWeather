@@ -8,7 +8,9 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.theweather.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SubscribeFragment : Fragment() {
 
     private lateinit var backButton: ImageButton
