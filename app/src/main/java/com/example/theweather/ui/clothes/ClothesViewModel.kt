@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clothesdb.models.enums.MainTypeEnumDBO
-import com.example.theweather.MAIN
+import com.example.clothesdb.models.enums.StyleEnumDBO
 import com.example.theweather.R
 import com.example.theweather.ui.clothes.models.ClothesTypeUI
-import com.example.weatherdata.clothes.repository.ClothesRepository
 import com.example.weatherdata.clothes.useCase.ClothesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -24,9 +23,9 @@ class ClothesViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _clothesTypes: List<ClothesTypeUI> = listOf(
-        ClothesTypeUI("Верх", R.drawable.clothes_type_top, MainTypeEnumDBO.HIGH),
-        ClothesTypeUI("Низ", R.drawable.clothes_type_low, MainTypeEnumDBO.LOW),
-        ClothesTypeUI("Обувь", R.drawable.clothes_type_shoes2, MainTypeEnumDBO.SHOES)
+        ClothesTypeUI("Классический", R.drawable.clothes_type_top, StyleEnumDBO.CLASSIC),
+        ClothesTypeUI("Кежуал", R.drawable.clothes_type_low, StyleEnumDBO.CASUAL),
+        ClothesTypeUI("Смарт-кежуал", R.drawable.clothes_type_shoes2, StyleEnumDBO.SMART_CASUAL)
     )
     var clothesTypes = MutableLiveData<List<ClothesTypeUI>>().apply {
         value = _clothesTypes
@@ -77,6 +76,6 @@ class ClothesViewModel @Inject constructor(
     }
     public fun navToClothesRecommendations(clothesType: ClothesTypeUI){
         val bundle = bundleOf("clothesType" to clothesType.clothesType.toString())
-        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment, bundle)
+//        MAIN.navController.navigate(R.id.action_navigation_clothes_to_clothesRecommendationsListFragment, bundle)
     }
 }

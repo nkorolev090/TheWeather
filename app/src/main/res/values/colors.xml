@@ -20,4 +20,5 @@
     <color name="navBarColor">@color/purple_300</color>
     <color name="clothesRecommendationsColor">#FFF3E7</color>
     <color name="clothesColor">@color/blue_200</color>
+    <color name="primary">#168FFF</color>
 </resources>
