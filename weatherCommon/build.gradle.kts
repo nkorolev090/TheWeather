@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.example.weathercommon"
-    compileSdk = 34
+    compileSdk = libs.versions.androidSdk.compile.get().toInt()
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.androidSdk.min.get().toInt()
 
         consumerProguardFiles("consumer-rules.pro")
     }

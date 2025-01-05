@@ -29,66 +29,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.project.theweather.ui.theme.TheWeatherTheme
+import com.project.weather.main.WeatherMainScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             TheWeatherTheme {
-                Box(modifier = Modifier.fillMaxSize()
-                ) {
-                    LazyColumn(modifier = Modifier
-                        .fillMaxSize()
-                        .paint(
-                        painterResource(id = R.drawable.back),
-                        contentScale = ContentScale.FillBounds)
-                        .padding(PaddingValues(
-                            top = 0.dp,
-                            start = 0.dp,
-                            end = 0.dp,
-                            bottom = 0.dp)),
-                        horizontalAlignment = Alignment.CenterHorizontally){
-                        for(i in 0..20){
-                            item { Greeting(name = "TheWeather", modifier = Modifier.padding(vertical = 40.dp)) }
-                        }
-                    }
-                    Box(modifier = Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
-                        .align(Alignment.TopCenter)
-                        .padding(top = 50.dp)){
-                        Text(
-                            text = "App Bar",
-                            modifier = Modifier
-                                .align(Alignment.BottomCenter)
-                                .padding(top = 0.dp, bottom = 10.dp),
-                            color = Color.Black,
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
+                WeatherMainScreen()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        color = Color.White,
-        fontSize = 30.sp,
-        fontWeight = FontWeight.Bold
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TheWeatherTheme {
-        Greeting("Android")
     }
 }

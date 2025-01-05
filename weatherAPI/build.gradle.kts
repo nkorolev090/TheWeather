@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace = "com.example.data"
-    compileSdk = 34
+    compileSdk = libs.versions.androidSdk.compile.get().toInt()
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.androidSdk.min.get().toInt()
 
         consumerProguardFiles("consumer-rules.pro")
         externalNativeBuild {

@@ -2,7 +2,6 @@ package com.example.theweather
 
 import android.content.Context
 import com.example.clothesdb.ClothesDatabase
-import com.example.clothesdb.ClothesRoomDatabase
 import com.example.data.WeatherApi
 import com.example.weathercommon.AppDispatchers
 import com.example.weatherdb.WeatherDatabase

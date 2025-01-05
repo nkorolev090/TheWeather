@@ -2,15 +2,15 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.example.weatherdata"
-    compileSdk = 34
+    compileSdk = libs.versions.androidSdk.compile.get().toInt()
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.androidSdk.min.get().toInt()
 
         consumerProguardFiles("consumer-rules.pro")
         externalNativeBuild {
@@ -54,7 +54,7 @@ dependencies {
     implementation(project(":dataBase"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.dagger.hilt.android)
-    kapt(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.retrofit)
 }
