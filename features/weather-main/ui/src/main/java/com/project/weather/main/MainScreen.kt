@@ -48,10 +48,10 @@ internal fun WeatherMainScreen(
                 bottom = 0.dp)
             ),
             horizontalAlignment = Alignment.CenterHorizontally){
-            for(i in 0..20){
-                item { Greeting(name = "TheWeather", modifier = Modifier.padding(vertical = 40.dp)) }
-            }
+        for(i in 0..20){
+            item { Greeting(name = "TheWeather", modifier = Modifier.padding(vertical = 40.dp)) }
         }
+    }
         Box(modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
