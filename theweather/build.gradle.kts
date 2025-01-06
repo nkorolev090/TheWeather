@@ -56,4 +56,5 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)
     implementation(project(":features:weather-main:ui"))
+    implementation(project(":uikit"))
 }
