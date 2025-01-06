@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.dp
 import com.project.weather.main.ui.R
 
 private val TOP_BAR_RADIUS = 45.dp
+
 @Composable
-fun TopBar(modifier: Modifier = Modifier) {
+internal fun TopBar(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()
