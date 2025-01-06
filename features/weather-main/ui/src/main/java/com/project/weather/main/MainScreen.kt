@@ -18,22 +18,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.project.weather.main.ui.R
 
 @Composable
-fun WeatherMainScreen(modifier: Modifier = Modifier){
-WeatherMainScreen(viewModel = viewModel(), modifier = modifier)
+fun WeatherMainScreen(modifier: Modifier = Modifier) {
+    WeatherMainScreen(viewModel = viewModel(), modifier = modifier)
 }
 
 @Composable
 internal fun WeatherMainScreen(
     viewModel: WeatherMainViewModel,
-    modifier: Modifier= Modifier
-){
-    Box(modifier = Modifier.fillMaxSize()
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier.fillMaxSize()
     ) {
         LazyColumn(modifier = Modifier
             .fillMaxSize()
@@ -57,6 +59,34 @@ internal fun WeatherMainScreen(
             .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
             .align(Alignment.TopCenter)
             .padding(top = 50.dp)){
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .paint(
+                    painterResource(R.drawable.back),
+                    contentScale = ContentScale.FillBounds
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            for (i in 0..20) {
+                item {
+                    Greeting(
+                        name = "TheWeather $i",
+                        modifier = Modifier.padding(vertical = 40.dp)
+                    )
+                }
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    MaterialTheme.colorScheme.surfaceContainer,
+                    RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp)
+                )
+                .align(Alignment.TopCenter)
+                .padding(top = 50.dp)
+        ) {
             Text(
                 text = "App Bar",
                 modifier = Modifier
@@ -80,3 +110,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         fontWeight = FontWeight.Bold
     )
 }
+
+@Preview
+@Composable
+fun Preview(){
+    MaterialTheme{
+        WeatherMainScreen()
+    }
+}
+
