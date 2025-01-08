@@ -33,6 +33,19 @@ private val anonymousFontFamily = FontFamily(listOf(
     )
 ))
 
+private val interFontFamily = FontFamily(listOf(
+    Font(
+        resId = R.font.inter,
+        weight = FontWeight.Normal,
+        style = FontStyle.Normal,
+    ),
+    Font(
+        resId = R.font.inter_italic,
+        weight = FontWeight.Normal,
+        style = FontStyle.Italic,
+    ),
+))
+
 val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = anonymousFontFamily,
@@ -40,7 +53,28 @@ val Typography = Typography(
         fontStyle = FontStyle.Normal,
         fontSize = 64.sp,
         letterSpacing = 0.5.sp
-    )
+    ),
+    titleMedium = TextStyle(
+        fontFamily = interFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontStyle = FontStyle.Normal,
+        fontSize = 36.sp,
+        letterSpacing = 0.4.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = interFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontStyle = FontStyle.Normal,
+        fontSize = 24.sp,
+        letterSpacing = 0.3.sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = interFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontStyle = FontStyle.Normal,
+        fontSize = 16.sp,
+        letterSpacing = 0.2.sp
+    ),
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,

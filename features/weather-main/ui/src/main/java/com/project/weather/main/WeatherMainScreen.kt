@@ -2,8 +2,10 @@ package com.project.weather.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
@@ -15,8 +17,11 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.project.uikit.TheWeatherTheme
+import com.project.weather.main.model.WeatherParameterUI
 import com.project.weather.main.ui.R
 
 @Composable
@@ -50,7 +55,11 @@ internal fun WeatherMainScreen(
             )
         }
         item {
-            WeatherParameters(modifier = Modifier.fillMaxWidth())
+            WeatherParameters(parameters[0], parameters[1], parameters[2], parameters[3],
+                modifier = Modifier
+                    .padding(horizontal = 7.dp)
+                    .height(IntrinsicSize.Min)
+                    .fillMaxWidth())
         }
     }
 }
@@ -66,3 +75,10 @@ internal fun LocationTitle(location: String, modifier: Modifier = Modifier) {
     )
 }
 
+
+private val parameters = listOf(
+    WeatherParameterUI.Humidity("20%","влажность", R.drawable.gradient1),
+    WeatherParameterUI.WindSpeed("5 м/с","скорость ветра", R.drawable.gradient2),
+    WeatherParameterUI.FeelsLikeTemperature("ощущается как: +18℃ ", R.drawable.gradient5),
+    WeatherParameterUI.Temperature("+21℃ ", R.drawable.gradient4),
+)
