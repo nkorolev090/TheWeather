@@ -37,41 +37,27 @@ internal fun WeatherMainScreen(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painterResource(R.drawable.back),
-                contentScale = ContentScale.FillBounds)
-            .padding(
-                PaddingValues(
-                top = 0.dp,
-                start = 0.dp,
-                end = 0.dp,
-                bottom = 0.dp)
-            ),
-            horizontalAlignment = Alignment.CenterHorizontally){
-        for(i in 0..20){
-            item { Greeting(name = "TheWeather", modifier = Modifier.padding(vertical = 40.dp)) }
-        }
-    }
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
-            .align(Alignment.TopCenter)
-            .padding(top = 50.dp)){
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .paint(
                     painterResource(R.drawable.back),
                     contentScale = ContentScale.FillBounds
+                )
+                .padding(
+                    PaddingValues(
+                        top = 0.dp,
+                        start = 0.dp,
+                        end = 0.dp,
+                        bottom = 0.dp
+                    )
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             for (i in 0..20) {
                 item {
                     Greeting(
-                        name = "TheWeather $i",
+                        name = "TheWeather",
                         modifier = Modifier.padding(vertical = 40.dp)
                     )
                 }
@@ -81,7 +67,7 @@ internal fun WeatherMainScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(
-                    MaterialTheme.colorScheme.surfaceContainer,
+                    MaterialTheme.colorScheme.surface,
                     RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp)
                 )
                 .align(Alignment.TopCenter)
@@ -113,9 +99,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun Preview(){
-    MaterialTheme{
+fun Preview() {
+    MaterialTheme {
         WeatherMainScreen()
     }
 }
-
