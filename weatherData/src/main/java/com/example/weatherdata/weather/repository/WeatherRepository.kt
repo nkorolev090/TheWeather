@@ -1,11 +1,14 @@
 package com.example.weatherdata.weather.repository
 
-import com.example.data.RequestResultAPI
 import com.example.data.WeatherApi
-import com.example.data.handleApi
 import com.example.data.models.ResponseDTO
+import com.example.weathercommon.api.apiRequestFlow
+import com.example.weathercommon.data.RequestResult
+import com.example.weathercommon.data.toRequestResult
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdb.WeatherDatabase
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
@@ -14,23 +17,33 @@ class WeatherRepository @Inject constructor(
     private val api: WeatherApi,
 ) {
 
-    suspend fun getAllWeather(city: String): RequestResult<Weather>{
-        val response = handleApi { api.weatherResponse(city = city) }
+    fun getAllWeather(city: String): Flow<RequestResult<Weather>> {
+         return apiRequestFlow {
+             api.weatherResponse(city = city)
+         }.map { response -> response.toRequestResult(
+             successAction = {successResponse ->
+                 if(successResponse.data.weather.isNotEmpty()){
+                     RequestResult.Success(successResponse.data.toWeather())
+                 }else{
+                     RequestResult.Error()
+                 }
+             }
+         ) }
 
-        return when(response){
-            is RequestResultAPI.Success->{
-                saveNetResponseToCache(response.data)
-                RequestResult.Success(response.data.toWeather())}
-            is RequestResultAPI.InProgress->RequestResult.InProgress()
-            is RequestResultAPI.Error->{
-                getFromDatabase(city)
-                //RequestResult.Error(code = response.code, message = response.message)
-            }
-            is RequestResultAPI.Exception-> {
-                getFromDatabase(city)
-//                RequestResult.Error(error = response.throwable)
-            }
-        }
+//        return when(response){
+//            is RequestResultAPI.Success->{
+//                saveNetResponseToCache(response.data)
+//                RequestResult.Success(response.data.toWeather())}
+//            is RequestResultAPI.InProgress->RequestResult.InProgress()
+//            is RequestResultAPI.Error->{
+//                getFromDatabase(city)
+//                //RequestResult.Error(code = response.code, message = response.message)
+//            }
+//            is RequestResultAPI.Exception-> {
+//                getFromDatabase(city)
+////                RequestResult.Error(error = response.throwable)
+//            }
+//        }
     }
 
     private suspend fun saveNetResponseToCache(data: ResponseDTO) {
