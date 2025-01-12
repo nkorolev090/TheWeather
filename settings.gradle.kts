@@ -20,7 +20,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "TheWeather"
-include(":app")
 include(":weatherAPI")
 include(":dataBase")
 include(":weatherData")
