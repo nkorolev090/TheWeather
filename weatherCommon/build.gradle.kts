@@ -37,4 +37,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.kotlinx.coroutines.core)
+
+    implementation(libs.retrofit)
+    implementation(libs.gson.serializer)
 }

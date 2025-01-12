@@ -5,6 +5,7 @@ package com.example.data
 import androidx.core.app.NotificationCompat.MessagingStyle.Message
 import com.example.data.models.ResponseDTO
 import com.example.data.utils.WeatherApiKeyInterceptor
+import com.example.weathercommon.api.RequestResultAPI
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import kotlinx.serialization.json.Json
@@ -25,37 +26,30 @@ interface WeatherApi {
         @Query("q") city: String,
     ): Response<ResponseDTO>
 }
-suspend fun <T : Any> handleApi(
-    execute: suspend () -> Response<T>
-): RequestResultAPI<T> {
-    return try {
-        val response= execute()
-        val body = response.body()
-        if (response.isSuccessful) {
-            RequestResultAPI.Success(data = checkNotNull(body))
-        } else {
-            RequestResultAPI.Error(code = response.code(), message = response.message())
-        }
-    } catch (e: HttpException) {
-        RequestResultAPI.Error(code = e.code(), message = e.message())
-    } catch (e: Throwable) {
-        RequestResultAPI.Exception(throwable = e)
-    }
-}
 
-sealed class RequestResultAPI<out E: Any>(open val data: E? = null){
-
-    class InProgress<E: Any>(data: E? = null) : RequestResultAPI<E>(data)
-    class Success<E : Any>(override val data: E) : RequestResultAPI<E>(data)
-    class Error<E: Any>(val code: Any? = null,val message: Any? = null) : RequestResultAPI<E>()
-    class Exception<E: Any>(val throwable: Throwable? = null) : RequestResultAPI<E>()
-}
+//suspend fun <T : Any> handleApi(
+//    execute: suspend () -> Response<T>
+//): RequestResultAPI<T> {
+//    return try {
+//        val response= execute()
+//        val body = response.body()
+//        if (response.isSuccessful) {
+//            RequestResultAPI.Success(data = checkNotNull(body))
+//        } else {
+//            RequestResultAPI.Error(code = response.code(), message = response.message())
+//        }
+//    } catch (e: HttpException) {
+//        RequestResultAPI.Error(code = e.code(), message = e.message())
+//    } catch (e: Throwable) {
+//        RequestResultAPI.Exception(throwable = e)
+//    }
+//}
 
 fun WeatherApi(
     baseUrl: String,
     apiKey: String,
     okHttpClient: OkHttpClient? = null,
-    json: Json = Json,
+    json: Json? = null,
 ): WeatherApi{
     return retrofit(baseUrl, apiKey, okHttpClient, json).create()
 }
@@ -64,12 +58,12 @@ private fun retrofit(
     baseUrl: String,
     apiKey: String,
     okHttpClient: OkHttpClient? = null,
-    json: Json = Json,
+    json: Json? = null,
     ): Retrofit {
-    val jsonConverterFactory = Json{
+    val jsonConverterFactory = (json ?: Json{
         isLenient = true
         ignoreUnknownKeys = true
-    }.asConverterFactory("application/json".toMediaType())
+    }).asConverterFactory("application/json".toMediaType())
 
     val modifiedOkHttpClient = (okHttpClient?.newBuilder() ?: OkHttpClient.Builder())
         .addInterceptor(WeatherApiKeyInterceptor(apiKey))

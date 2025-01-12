@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(project(":weatherAPI"))
     implementation(project(":dataBase"))
+    implementation(project(":weatherCommon"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compiler)

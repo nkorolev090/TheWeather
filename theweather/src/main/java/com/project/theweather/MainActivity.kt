@@ -29,8 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.project.theweather.ui.theme.TheWeatherTheme
-import com.project.weather.main.ClothesMainScreen
-import com.project.weather.main.HelloMainScreen
 import com.project.weather.main.WeatherMainScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,11 +38,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//            TheWeatherTheme {
-//                WeatherMainScreen()
-//            }
-            ClothesMainScreen()
-
+            TheWeatherTheme {
+                WeatherMainScreen()
+            }
         }
     }
 }

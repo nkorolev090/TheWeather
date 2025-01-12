@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.retrofit.adapters.result)
+    implementation(libs.squareup.okhttp)
 
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(project(":weatherCommon"))
 }
