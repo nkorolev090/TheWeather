@@ -41,4 +41,7 @@ dependencies {
 
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)
+
+    implementation(project(":weatherData"))
+    implementation(project(":weatherCommon"))
 }

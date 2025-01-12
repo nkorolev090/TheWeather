@@ -53,4 +53,5 @@ dependencies {
 
     implementation(project(":features:weather-main:ui-logic"))
     implementation(project(":uikit"))
+    implementation(project(":weatherCommon"))
 }

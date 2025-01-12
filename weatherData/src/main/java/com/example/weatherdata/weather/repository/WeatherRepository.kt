@@ -4,6 +4,7 @@ import com.example.data.WeatherApi
 import com.example.data.models.ResponseDTO
 import com.example.weathercommon.api.apiRequestFlow
 import com.example.weathercommon.data.RequestResult
+import com.example.weathercommon.data.StatusCodeEnum
 import com.example.weathercommon.data.toRequestResult
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdb.WeatherDatabase
@@ -25,7 +26,7 @@ class WeatherRepository @Inject constructor(
                  if(successResponse.data.weather.isNotEmpty()){
                      RequestResult.Success(successResponse.data.toWeather())
                  }else{
-                     RequestResult.Error()
+                     RequestResult.Error(code = StatusCodeEnum.NO_CONTENT)
                  }
              }
          ) }

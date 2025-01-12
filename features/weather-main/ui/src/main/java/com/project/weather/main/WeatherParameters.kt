@@ -2,7 +2,6 @@ package com.project.weather.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -13,24 +12,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.ParagraphStyle
-import androidx.compose.ui.text.PlatformParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
@@ -94,7 +88,7 @@ private fun ParameterView(
             .height(IntrinsicSize.Min)
     ) {
         Image(
-            painter = painterResource(parameter.backgroundId),
+            painter = painterResource(parameter.toBackgroundId()),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
@@ -119,7 +113,7 @@ private fun ParameterView(
 private fun ParameterViewPreview(){
     TheWeatherTheme {
         ParameterView(
-            parameter = WeatherParameterUI.Humidity("20%","влажность", R.drawable.gradient1),
+            parameter = WeatherParameterUI.Humidity("20%","влажность"),
         )
     }
 }
@@ -187,15 +181,22 @@ private fun WeatherParameterUI.toSpaceWeight(): Float =
         is WeatherParameterUI.WindSpeed -> 3.5f
     }
 
+private fun WeatherParameterUI.toBackgroundId(): Int =
+    when (this) {
+        is WeatherParameterUI.FeelsLikeTemperature -> R.drawable.gradient5
+        is WeatherParameterUI.Humidity -> R.drawable.gradient1
+        is WeatherParameterUI.Temperature -> R.drawable.gradient4
+        is WeatherParameterUI.WindSpeed -> R.drawable.gradient2
+    }
+
 private val CORNER_RADIUS = 30.dp
 
 private val parameters = listOf(
-    WeatherParameterUI.Humidity("20%","влажность", R.drawable.gradient1),
-    WeatherParameterUI.WindSpeed("5 м/с","скорость ветра", R.drawable.gradient2),
-    WeatherParameterUI.FeelsLikeTemperature("ощущается как: +18℃ ", R.drawable.gradient5),
-    WeatherParameterUI.Temperature("+21℃ ", R.drawable.gradient4),
+    WeatherParameterUI.Humidity("20%","влажность"),
+    WeatherParameterUI.WindSpeed("5 м/с","скорость ветра"),
+    WeatherParameterUI.FeelsLikeTemperature("ощущается как: +18℃ "),
+    WeatherParameterUI.Temperature("+21℃ "),
 )
-
 
 @Preview
 @Composable

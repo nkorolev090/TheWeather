@@ -17,6 +17,9 @@ android {
         targetSdk = libs.versions.androidSdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "WEATHER_API_KEY", "\"0ab1b21790762bc0577c8fd4b075fb23\"")
+        buildConfigField("String", "WEATHER_API_BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
     }
 
     buildTypes {
@@ -37,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -55,6 +59,18 @@ dependencies {
 
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)
+
+    implementation(platform(libs.squareup.okhttp.bom))
+    implementation(libs.squareup.okhttp)
+    implementation(libs.squareup.okhttp.logging)
+
+    implementation(libs.kotlinx.serialization.json)
+
     implementation(project(":features:weather-main:ui"))
     implementation(project(":uikit"))
+
+    implementation(project(":weatherAPI"))
+    implementation(project(":weatherData"))
+    implementation(project(":dataBase"))
+    implementation(project(":weatherCommon"))
 }
