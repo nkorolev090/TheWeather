@@ -1,7 +1,7 @@
 package com.example.weatherdata.weather.repository
 
-import com.example.data.WeatherApi
-import com.example.data.models.ResponseDTO
+import com.example.weatherAPI.WeatherApi
+import com.example.weatherAPI.models.ResponseDTO
 import com.example.weathercommon.api.apiRequestFlow
 import com.example.weathercommon.data.RequestResult
 import com.example.weathercommon.data.StatusCodeEnum

@@ -2,9 +2,12 @@ package com.project.theweather
 
 import android.content.Context
 import com.example.clothesdb.ClothesDatabase
-import com.example.data.WeatherApi
+import com.example.weatherAPI.WeatherApi
 import com.example.weathercommon.AppDispatchers
 import com.example.weatherdb.WeatherDatabase
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -72,4 +75,9 @@ object AppModule {
     fun provideAppCoroutineDispatchers(): AppDispatchers{
         return AppDispatchers()
     }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseFirestore(): FirebaseFirestore =
+        Firebase.firestore
 }

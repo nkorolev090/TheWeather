@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 
+    alias(libs.plugins.google.services)
+
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.ksp)
 }
@@ -65,6 +67,9 @@ dependencies {
     implementation(libs.squareup.okhttp.logging)
 
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.firestore)
 
     implementation(project(":features:weather-main:ui"))
     implementation(project(":uikit"))
