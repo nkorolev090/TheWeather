@@ -31,7 +31,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.project.uikit.TheWeatherTheme
-import com.project.features.weather_main.model.WeatherParameterUI
+import com.project.features.weather_main.models.WeatherParameterUI
 import com.project.weather.main.ui.R
 
 @Composable

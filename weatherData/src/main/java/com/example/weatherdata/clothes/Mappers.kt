@@ -5,14 +5,15 @@ import com.example.clothesdb.models.enums.MainEnumDBO
 import com.example.firebaseapi.clothes.models.ClothesDTO
 import com.example.firebaseapi.clothes.models.ClothesTypeDTO
 import com.example.firebaseapi.clothes.models.TempModeDTO
-import com.example.firebaseapi.clothes.models.enums.ClothesSubTypeEnum
-import com.example.firebaseapi.clothes.models.enums.ClothesTypeEnum
+import com.example.weatherdata.clothes.models.enums.ClothesSubTypeEnum
+import com.example.weatherdata.clothes.models.enums.ClothesTypeEnum
 import com.example.firebaseapi.clothes.models.enums.MainEnumDTO
 import com.example.firebaseapi.clothes.models.enums.MainTypeEnumDTO
 import com.example.firebaseapi.clothes.models.enums.StyleEnum
 import com.example.firebaseapi.clothes.models.enums.StyleEnumDTO
 import com.example.firebaseapi.clothes.models.enums.SubTypeEnumDTO
 import com.example.weatherdata.clothes.models.Clothes
+import com.example.weatherdata.clothes.models.ClothesStyle
 import com.example.weatherdata.clothes.models.ClothesType
 import com.example.weatherdata.clothes.models.TempMode
 import com.example.weatherdata.weather.models.MainEnum
@@ -34,13 +35,13 @@ fun MainEnum.toMainEnumDTO(): MainEnumDTO =
     }
 
 
-fun ClothesType.toClothesTypeDTO(): ClothesTypeDTO =
+fun ClothesType.toClothesTypeDTO(styleEnum: StyleEnum): ClothesTypeDTO =
     ClothesTypeDTO(
         id = id,
         mainType = mainType.toMainTypeEnumDTO(),
         subType = subType.toSubTypeEnumDTO(),
         layer = layer,
-        style = style.toStyleEnumDTO()
+        style = styleEnum.toStyleEnumDTO()
     )
 
 fun ClothesTypeEnum.toMainTypeEnumDTO(): MainTypeEnumDTO =
@@ -61,17 +62,30 @@ fun StyleEnum.toStyleEnumDTO(): StyleEnumDTO =
         StyleEnum.SPORT -> StyleEnumDTO.SPORT
     }
 
-fun Clothes.toClothesDTO(): ClothesDTO =
+fun Clothes.toClothesDTO(styleEnum: StyleEnum): ClothesDTO =
     ClothesDTO(
         id = id,
         color = color,
         name = name,
         material = material,
         size = size,
+        imageURL = imageURL,
         tempMode = tempMode.toTempModeDTO(),
-        clothesType = clothesType.toClothesTypeDTO(),
+        clothesType = clothesType.toClothesTypeDTO(styleEnum),
         season = season,
     )
+
+fun List<ClothesStyle>.toClothesDTOList(): List<ClothesDTO> {
+    val clothesList: MutableList<ClothesDTO> = mutableListOf()
+    this.forEach { clothesStyle ->
+        clothesList.addAll(clothesStyle
+            .clothes.map {
+                it.toClothesDTO(clothesStyle.styleType)
+            }
+        )
+    }
+    return clothesList
+}
 
 //endregion
 
@@ -85,7 +99,7 @@ fun TempModeDTO.toTempMode(): TempMode? =
             high = high!!,
             main = main!!.toMainEnum()
         )
-    }catch (e: Exception){
+    } catch (e: Exception) {
         null
     }
 
@@ -105,10 +119,8 @@ fun ClothesTypeDTO.toClothesType(): ClothesType? =
             mainType = mainType!!.toClothesTypeEnum(),
             subType = subType!!.toClothesSubTypeEnum(),
             layer = layer!!,
-            style = style!!.toStyleEnum()
         )
-    }
-    catch (e: Exception){
+    } catch (e: Exception) {
         null
     }
 
@@ -144,8 +156,7 @@ fun ClothesDTO.toClothes(): Clothes? =
             clothesType = clothesType!!.toClothesType()!!,
             season = season!!
         )
-    }
-    catch (e: Exception){
+    } catch (e: Exception) {
         null
     }
 

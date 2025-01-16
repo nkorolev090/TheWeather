@@ -1,4 +1,4 @@
-package com.example.firebaseapi.clothes.models.enums
+package com.example.weatherdata.clothes.models.enums
 
 enum class ClothesTypeEnum {
     HIGH,

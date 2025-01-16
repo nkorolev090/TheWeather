@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+    alias(libs.plugins.dagger.hilt.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -33,8 +36,13 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    ksp(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.android)
+
+    implementation(project(":weatherData"))
+    implementation(project(":weatherCommon"))
 }

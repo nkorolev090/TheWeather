@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weathercommon.data.RequestResult
 import com.example.weatherdata.clothes.repository.ClothesRepository
-import com.project.features.weather_main.model.WeatherUI
+import com.project.features.weather_main.models.WeatherUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
