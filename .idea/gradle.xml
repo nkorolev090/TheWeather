@@ -12,9 +12,13 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/dataBase" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/clothes" />
+            <option value="$PROJECT_DIR$/features/clothes/ui" />
+            <option value="$PROJECT_DIR$/features/clothes/ui-logic" />
             <option value="$PROJECT_DIR$/features/weather-main" />
             <option value="$PROJECT_DIR$/features/weather-main/ui" />
             <option value="$PROJECT_DIR$/features/weather-main/ui-logic" />
+            <option value="$PROJECT_DIR$/firebaseAPI" />
             <option value="$PROJECT_DIR$/theweather" />
             <option value="$PROJECT_DIR$/uikit" />
             <option value="$PROJECT_DIR$/weatherAPI" />

@@ -6,6 +6,7 @@ data class Clothes(
      val name: String,
      val material: String,
      val size: String,
+     val imageURL: String,
      val tempMode: TempMode,
      val clothesType: ClothesType,
      val season: String

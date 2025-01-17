@@ -1,234 +1,332 @@
 package com.example.weatherdata.clothes.repository
 
 import android.util.Log
-import com.example.clothesdb.ClothesDatabase
-import com.example.clothesdb.models.ClothesDBO
-import com.example.clothesdb.models.ClothesTypeDBO
-import com.example.clothesdb.models.TempModeDBO
-import com.example.clothesdb.models.enums.MainEnumDBO
-import com.example.clothesdb.models.enums.MainTypeEnumDBO
-import com.example.clothesdb.models.enums.StyleEnumDBO
-import com.example.clothesdb.models.enums.SubTypeEnumDBO
+import com.example.firebaseapi.clothes.ClothesAPI
+import com.example.firebaseapi.clothes.models.ClothesDTO
+import com.example.weatherdata.clothes.models.enums.ClothesSubTypeEnum
+import com.example.weatherdata.clothes.models.enums.ClothesTypeEnum
+import com.example.firebaseapi.clothes.models.enums.StyleEnum
+import com.example.firebaseapi.clothes.models.enums.StyleEnumDTO
+import com.example.weathercommon.data.RequestResult
+import com.example.weathercommon.data.StatusCodeEnum
+import com.example.weathercommon.data.toRequestResult
+import com.example.weathercommon.firebase.firestoreRequestFlow
 import com.example.weatherdata.clothes.models.Clothes
+import com.example.weatherdata.clothes.models.ClothesStyle
 import com.example.weatherdata.clothes.models.ClothesType
 import com.example.weatherdata.clothes.models.TempMode
+import com.example.weatherdata.clothes.toClothes
+import com.example.weatherdata.clothes.toClothesDTO
+import com.example.weatherdata.clothes.toClothesDTOList
+import com.example.weatherdata.clothes.toStyleEnum
+import com.example.weatherdata.clothes.toStyleEnumDTO
 import com.example.weatherdata.weather.models.MainEnum
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import okhttp3.internal.filterList
 import javax.inject.Inject
 
 class ClothesRepository @Inject constructor(
-    private val database: ClothesDatabase,
-){
+    private val clothesAPI: ClothesAPI
+) {
     private val _clothesForDb = listOf(//mocked data
-        Clothes(
-            id = 0,
-            color = "color1",
-            name = "test name1",
-            material = "material",
-            size = "size1",
-            tempMode = TempMode(0, 0.0, 20.0, MainEnum.CLOUDS),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
-            season = "season1"
+        ClothesStyle(
+            styleType = StyleEnum.OFFICIAL,
+            clothes = listOf(
+                Clothes(
+                    id = 0,
+                    color = "color4",
+                    name = "test name4",
+                    material = "material4",
+                    size = "size4",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 20.0, 40.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season4"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color5",
+                    name = "test name5",
+                    material = "material",
+                    size = "size5",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 0.0, 15.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season5"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color6",
+                    name = "test name6",
+                    material = "material6",
+                    size = "size6",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 10.0, 30.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season6"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color7",
+                    name = "test name7",
+                    material = "material7",
+                    size = "size7",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 0.0, 300.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season7"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color8",
+                    name = "test name8",
+                    material = "material8",
+                    size = "size8",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 20.0, 30.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season8"
+                )
+            )
         ),
-        Clothes(
-            id = 0,
-            color = "color2",
-            name = "test name2",
-            material = "material2",
-            size = "size2",
-            tempMode = TempMode(0, 10.0, 20.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
-            season = "season2"
-        ),
-        Clothes(
-            id = 0,
-            color = "color3",
-            name = "test name3",
-            material = "material3",
-            size = "size3",
-            tempMode = TempMode(0, -30.0, 10.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
-            season = "season3"
-        ),
-        Clothes(
-            id = 0,
-            color = "color4",
-            name = "test name4",
-            material = "material4",
-            size = "size4",
-            tempMode = TempMode(0, 20.0, 40.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
-            season = "season4"
-        ),
-        Clothes(
-            id = 0,
-            color = "color5",
-            name = "test name5",
-            material = "material",
-            size = "size5",
-            tempMode = TempMode(0, 0.0, 15.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
-            season = "season5"
-        ),
-        Clothes(
-            id = 0,
-            color = "color6",
-            name = "test name6",
-            material = "material6",
-            size = "size6",
-            tempMode = TempMode(0, 10.0, 30.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.LOW, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
-            season = "season6"
-        ),
-        Clothes(
-            id = 0,
-            color = "color7",
-            name = "test name7",
-            material = "material7",
-            size = "size7",
-            tempMode = TempMode(0, 0.0, 300.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.SHOES, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.SPORT),
-            season = "season7"
-        ),
-        Clothes(
-            id = 0,
-            color = "color8",
-            name = "test name8",
-            material = "material8",
-            size = "size8",
-            tempMode = TempMode(0, 20.0, 30.0, MainEnum.CLEAR),
-            clothesType = ClothesType(0, MainTypeEnumDBO.HIGH, SubTypeEnumDBO.T_SHIRT, 0, StyleEnumDBO.OFFICIAL),
-            season = "season8"
+        ClothesStyle(
+            styleType = StyleEnum.SPORT,
+            clothes = listOf(
+                Clothes(
+                    id = 0,
+                    color = "color4",
+                    name = "test name4",
+                    material = "material4",
+                    size = "size4",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 20.0, 40.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season4"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color5",
+                    name = "test name5",
+                    material = "material",
+                    size = "size5",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 0.0, 15.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season5"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color6",
+                    name = "test name6",
+                    material = "material6",
+                    size = "size6",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 10.0, 30.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season6"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color7",
+                    name = "test name7",
+                    material = "material7",
+                    size = "size7",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 0.0, 300.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season7"
+                ),
+                Clothes(
+                    id = 0,
+                    color = "color8",
+                    name = "test name8",
+                    material = "material8",
+                    size = "size8",
+                    imageURL = "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/ca6/768_1024_9f7e/51158700299.jpg",
+                    tempMode = TempMode(0, 20.0, 30.0, MainEnum.CLEAR),
+                    clothesType = ClothesType(
+                        0,
+                        ClothesTypeEnum.LOW,
+                        ClothesSubTypeEnum.T_SHIRT,
+                        0
+                    ),
+                    season = "season8"
+                )
+            )
         )
     )
 
-    suspend fun getAllClothes(): List<Clothes> {
-       return database.clothesDao.getAll().map {
-           var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
-           var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
-           if(tempMode == null || clothesType == null){
-               return emptyList()
-           }
-           it.toClothes(tempMode, clothesType)
-       }
-    }
+    //region DEPRECATED METHODS
 
-    suspend fun restoreClothesDatabase(){
-        Log.d("ClothesRepo", "Restore")
-        database.clothesDao.clean()
-        for(item in _clothesForDb){
-            insertClothes(item)
+    //    suspend fun getAllClothes(): List<Clothes> {
+//       return database.clothesDao.getAll().map {
+//           var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
+//           var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
+//           if(tempMode == null || clothesType == null){
+//               return emptyList()
+//           }
+//           it.toClothes(tempMode, clothesType)
+//       }
+//    }
+//
+//    suspend fun restoreClothesDatabase(){
+//        Log.d("ClothesRepo", "Restore")
+//        database.clothesDao.clean()
+//        for(item in _clothesForDb){
+//            insertClothes(item)
+//        }
+//    }
+//
+//    suspend fun getClothesByMainType(mainType: MainTypeEnumDBO): List<Clothes>{
+//        var allClothes = database.clothesDao.getAll().map {
+//            var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
+//            var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
+//            if(tempMode == null || clothesType == null){
+//                return emptyList()
+//            }
+//            it.toClothes(tempMode, clothesType)
+//        }
+//
+//        return allClothes.filter { clothes -> clothes.clothesType.mainType == mainType }
+//    }
+//
+//    suspend fun insertClothes(clothes: Clothes) {
+//        var clothesTypeId = insertClothesType(clothes.clothesType)
+//        var tempModeId = insertTempMode(clothes.tempMode)
+//
+//        database.clothesDao.insert(clothes.toClothesDBO(clothesTypeId, tempModeId))
+//    }
+//
+//    suspend fun getAllClothesType(): List<ClothesType> {
+//        return database.clothesTypeDao.getAll().map { it.toClothesType() }
+//    }
+//
+//    suspend fun insertClothesType(clothesType: ClothesType) : Long {
+//        return database.clothesTypeDao.insert(clothesType.toClothesTypeDBO())
+//    }
+//
+//    suspend fun insertTempMode(tempMode: TempMode) : Long {
+//        return database.tempModeDao.insert(tempMode.toTempModeDBO())
+//
+//    }
+//}
+
+
+//private fun ClothesTypeDTO.toClothesType(): ClothesType {
+//    return  ClothesType(
+//        id = id,
+//        mainType = mainType,
+//        subType = subType,
+//        layer = layer,
+//        style = style)
+//}
+
+    //endregion
+
+    suspend fun testFirebase() {
+//        val clothesDTOList = _clothesForDb.toClothesDTOList()
+//        for (clothes in clothesDTOList) {
+//            clothesAPI.writeNewClothes(clothes)
+//        }
+
+        getAllClothes().collect { result ->
+            Log.d("FIRESTORE", result.data.toString())
         }
     }
 
-    suspend fun getClothesByMainType(mainType: MainTypeEnumDBO): List<Clothes>{
-        var allClothes = database.clothesDao.getAll().map {
-            var tempMode = database.tempModeDao.getFromId(it.tempModeId).first()
-            var clothesType = database.clothesTypeDao.getFromId(it.clothesTypeId).first()
-            if(tempMode == null || clothesType == null){
-                return emptyList()
-            }
-            it.toClothes(tempMode, clothesType)
+    fun getAllClothes(): Flow<RequestResult<List<ClothesStyle>>> =
+        firestoreRequestFlow {
+            clothesAPI.getClothesRecommendation()
+        }.map { requestResult ->
+            requestResult.toRequestResult(
+                successAction = { successResult ->
+                    if (successResult.data.isEmpty()) {
+                        RequestResult.Error(code = StatusCodeEnum.NO_CONTENT)
+                    } else {
+                        RequestResult.Success(successResult.data.toClothesStyle())
+                    }
+                })
         }
+}
 
-        return allClothes.filter { clothes -> clothes.clothesType.mainType == mainType }
+private fun List<ClothesDTO?>.toClothesStyle(): List<ClothesStyle> {
+    val styleMap: MutableMap<StyleEnum, MutableList<Clothes>> = mutableMapOf()
+    val clothesList = this.filterNotNull()
+
+    clothesList.forEach { clothesDTO ->
+        when (clothesDTO.clothesType?.style) {
+            StyleEnumDTO.OFFICIAL -> styleMap.putOrCreate(clothesDTO, StyleEnum.OFFICIAL)
+            StyleEnumDTO.SPORT -> styleMap.putOrCreate(clothesDTO, StyleEnum.SPORT)
+            null -> Unit
+        }
     }
 
-    suspend fun insertClothes(clothes: Clothes) {
-        var clothesTypeId = insertClothesType(clothes.clothesType)
-        var tempModeId = insertTempMode(clothes.tempMode)
-
-        database.clothesDao.insert(clothes.toClothesDBO(clothesTypeId, tempModeId))
-    }
-
-    suspend fun getAllClothesType(): List<ClothesType> {
-        return database.clothesTypeDao.getAll().map { it.toClothesType() }
-    }
-
-    suspend fun insertClothesType(clothesType: ClothesType) : Long {
-        return database.clothesTypeDao.insert(clothesType.toClothesTypeDBO())
-    }
-
-    suspend fun insertTempMode(tempMode: TempMode) : Long {
-        return database.tempModeDao.insert(tempMode.toTempModeDBO())
-
+    return styleMap.map { entry ->
+        ClothesStyle(
+            styleType = entry.key,
+            clothes = entry.value
+        )
     }
 }
 
-private fun ClothesTypeDBO.toClothesType(): ClothesType {
-    return  ClothesType(
-        id = id,
-        mainType = mainType,
-        subType = subType,
-        layer = layer,
-        style = style)
-}
+private fun MutableMap<StyleEnum, MutableList<Clothes>>.putOrCreate(
+    clothesDTO: ClothesDTO,
+    styleEnum: StyleEnum
+) {
+    val clothes = clothesDTO.toClothes() ?: return
 
-private fun TempMode.toTempModeDBO(): TempModeDBO {
-    return TempModeDBO(
-        id = id,
-        low = low,
-        high = high,
-        main = main.toMainEnumDBO()
-    )
-}
-
-private fun MainEnum.toMainEnumDBO(): MainEnumDBO {
-    return when(this){
-        MainEnum.CLEAR -> MainEnumDBO.CLEAR
-        MainEnum.CLOUDS -> MainEnumDBO.CLOUDS
-        MainEnum.RAIN -> MainEnumDBO.RAIN
-    }
-}
-
-private fun ClothesType.toClothesTypeDBO(): ClothesTypeDBO {
-    return ClothesTypeDBO(
-        id = id,
-        mainType = mainType,
-        subType = subType,
-        layer = layer,
-        style = style
-    )
-}
-
-private fun Clothes.toClothesDBO(tempModeId: Long = this.clothesType.id, clothesTypeId: Long = this.tempMode.id): ClothesDBO {
-return ClothesDBO(
-    id = id,
-    color = color,
-    name = name,
-    material = material,
-    size = size,
-    tempModeId = tempModeId,
-    clothesTypeId = clothesTypeId,
-    season = season,
-)
-}
-
-private fun ClothesDBO.toClothes(tempModeFromDb : TempModeDBO, clothesTypeFromDb : ClothesTypeDBO): Clothes {
-    return Clothes(
-        id = id,
-        color = color,
-        name = name,
-        material = material,
-        size = size,
-        tempMode = tempModeFromDb.toTempMode(),
-        clothesType = clothesTypeFromDb.toClothesType(),
-        season = season
-    )
-}
-
-private fun TempModeDBO.toTempMode(): TempMode {
-    return TempMode(
-        id = id,
-        low = low,
-        high = high,
-        main = main.toMainEnum()
-    )
-}
-
-private fun MainEnumDBO.toMainEnum(): MainEnum {
-    return when(this){
-        MainEnumDBO.CLEAR -> MainEnum.CLEAR
-        MainEnumDBO.CLOUDS -> MainEnum.CLOUDS
-        MainEnumDBO.RAIN -> MainEnum.RAIN
+    val styleItem = this[styleEnum]
+    if (styleItem != null) {
+        styleItem.add(clothes)
+    } else {
+        this[styleEnum] = mutableListOf(
+            clothes
+        )
     }
 }

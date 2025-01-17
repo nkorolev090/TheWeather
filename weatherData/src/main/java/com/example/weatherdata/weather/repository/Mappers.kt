@@ -1,7 +1,7 @@
 package com.example.weatherdata.weather.repository
 
 import android.util.Log
-import com.example.data.models.ResponseDTO
+import com.example.weatherAPI.models.ResponseDTO
 import com.example.weatherdata.weather.models.MainEnum
 import com.example.weatherdata.weather.models.Weather
 import com.example.weatherdb.models.WeatherDBO
