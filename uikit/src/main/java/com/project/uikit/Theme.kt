@@ -12,12 +12,18 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-
+//region FOR TEXT AND ICONS ELEMENTS
     onPrimary = Color.White,
     onSecondary = BlueGray200,
+    onTertiary = Gray400,
+    onSurface = Yellow300,
+//endregion
 
     inverseOnSurface = LightBlack200,
     background = Color.White,
+    secondaryContainer = LightGray150,
+    tertiaryContainer = LightGray200,
+
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

@@ -46,7 +46,12 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.io.coil)
+    implementation(libs.io.coil.network.okhttp)
 
     debugImplementation(libs.androidx.ui.tooling)
 
+    implementation(project(":uikit"))
+    implementation(project(":features:clothes:ui-logic"))
+    implementation(project(":weatherCommon"))
 }

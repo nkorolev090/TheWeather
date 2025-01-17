@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WeatherMainViewModel @Inject internal constructor(
-    private val weatherMainUseCase: WeatherMainUseCase,
+    weatherMainUseCase: WeatherMainUseCase,
     private val clothesRepository: ClothesRepository
 ): ViewModel(){
     val state: StateFlow<RequestResult<WeatherUI>> =

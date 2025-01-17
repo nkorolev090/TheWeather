@@ -24,13 +24,10 @@ androidSdk-min = "28"
 androidSdk-compile = "35"
 
 gson = "2.10.1"
-
 firebase = "33.7.0"
-
 google-services = "4.4.2"
-junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+
+ioCoil = "3.0.4"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -66,12 +63,11 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 gson-serializer = { module = "com.google.code.gson:gson", version.ref = "gson" }
-
 google-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase"}
 google-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore"}
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+io-coil = {group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "ioCoil"}
+io-coil-network-okhttp = {group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "ioCoil"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

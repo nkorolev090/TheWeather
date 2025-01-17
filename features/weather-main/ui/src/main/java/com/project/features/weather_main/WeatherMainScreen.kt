@@ -23,6 +23,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weathercommon.data.RequestResult
+import com.project.features.clothes.ClothesItem
+import com.project.features.clothes.ClothesRecommendationMainContent
+import com.project.features.clothes.models.ClothesUI
 import com.project.features.weather_main.models.WeatherUI
 import com.project.weather.main.ui.R
 
@@ -60,7 +63,9 @@ internal fun WeatherMainScreen(
                 }
             }
         }
-
+        item {
+            ClothesRecommendationMainContent()
+        }
     }
 }
 

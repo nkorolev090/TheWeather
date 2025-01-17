@@ -9,8 +9,8 @@ data class ClothesUI(
 )
 
 fun Clothes.toClothesUI() : ClothesUI {
-    val name = this.clothesType.subType.toTypeString()
-    ClothesUI(
+    //val name = this.clothesType.subType.toTypeString()
+    return ClothesUI(
         colorText = color,
         nameText = name,
         imageURL = imageURL
