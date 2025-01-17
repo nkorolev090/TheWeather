@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(project(":uikit"))
+    implementation(project(":weatherCommon"))
 
     debugImplementation(libs.androidx.ui.tooling)
 

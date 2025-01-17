@@ -18,6 +18,7 @@ val LightBlue15Figma = Color(0xFF71DBEE)
 val PurpleFigma = Color(0xFF666666)
 val PurpleFigma1 = Color(0xFFF6F7F2)
 
+val Yellow300 = Color(0xFFF4C600)
 val LightBlack200 = Color(0x32252525)
 val BlueGray200 = Color(0xFFA9B1C1)
 

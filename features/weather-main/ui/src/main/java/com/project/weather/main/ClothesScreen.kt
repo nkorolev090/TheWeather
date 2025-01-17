@@ -24,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -85,13 +86,15 @@ fun ClothesItem() {
         Text(
             text = "Подобрали для вас",
             fontSize = 24.sp,
-            color = Color.Gray,
+            color = MaterialTheme.colorScheme.onPrimary,
+            style = MaterialTheme.typography.titleSmall,
             textAlign = TextAlign.Right,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
             text = "спортивный",
             fontSize = 13.sp,
+            style = MaterialTheme.typography.headlineSmall,
             color = Color.Yellow,
             textAlign = TextAlign.Right,
             modifier = Modifier.padding(8.dp)
@@ -117,18 +120,18 @@ fun ClothesItem() {
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-//                    .background(Color.Black.copy(alpha = 0.7f))
                     .padding(13.dp)
                     .clip(RoundedCornerShape(35.dp))
+                    .background(Color.White)
                     .border(4.dp, color = Color.White)
             ) {
-                Text(
+                Text(   
                     text = "Кроп топ",
-                    fontSize = 24.sp,
+                    fontSize = 22.sp,
                     color = Color.Black,
-
-
-                    )
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.padding(8.dp)
+                )
             }
 
         }
