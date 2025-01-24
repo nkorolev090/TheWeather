@@ -23,9 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weathercommon.data.RequestResult
-import com.project.features.clothes.ClothesItem
-import com.project.features.clothes.ClothesRecommendationMainContent
-import com.project.features.clothes.models.ClothesUI
+import com.project.features.recommendations.advice.AdviceContent
+import com.project.features.recommendations.clothes.ClothesRecommendationMainContent
 import com.project.features.weather_main.models.WeatherUI
 import com.project.weather.main.ui.R
 
@@ -55,22 +54,30 @@ internal fun WeatherMainScreen(
     ) {
         item { TopBar() }
         item {
-            when(currentState){
+            when (currentState) {
                 is RequestResult.Error -> Unit
                 is RequestResult.Loading -> Unit
                 is RequestResult.Success -> {
-                    WeatherMainContent(currentState.data)
+                    WeatherMainContent(
+                        currentState.data
+                    )
                 }
             }
         }
         item {
-            ClothesRecommendationMainContent()
+            AdviceContent(
+                Modifier
+                    .padding(start = 7.dp, end = 7.dp, top = 13.dp)
+            )
+        }
+        item {
+            ClothesRecommendationMainContent(modifier.padding(vertical = 25.dp))
         }
     }
 }
 
 @Composable
-internal fun WeatherMainContent(currentState: WeatherUI, modifier: Modifier = Modifier){
+internal fun WeatherMainContent(currentState: WeatherUI, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
     ) {
@@ -80,11 +87,16 @@ internal fun WeatherMainContent(currentState: WeatherUI, modifier: Modifier = Mo
                 .fillMaxWidth()
                 .padding(vertical = 70.dp)
         )
-        WeatherParameters(currentState.humidity, currentState.windSpeed, currentState.feelsLikeTemperature, currentState.temperature,
+        WeatherParameters(
+            currentState.humidity,
+            currentState.windSpeed,
+            currentState.feelsLikeTemperature,
+            currentState.temperature,
             modifier = Modifier
                 .padding(horizontal = 7.dp)
                 .height(IntrinsicSize.Min)
-                .fillMaxWidth())
+                .fillMaxWidth()
+        )
     }
 }
 

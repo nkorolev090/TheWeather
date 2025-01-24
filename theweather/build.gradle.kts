@@ -70,8 +70,12 @@ dependencies {
 
     implementation(platform(libs.google.firebase.bom))
     implementation(libs.google.firebase.firestore)
+    implementation(libs.google.firebase.auth)
+
+    implementation(libs.google.services.auth)
 
     implementation(project(":features:weather-main:ui"))
+    implementation(project(":features:authentication:ui"))
     implementation(project(":uikit"))
 
     implementation(project(":weatherAPI"))

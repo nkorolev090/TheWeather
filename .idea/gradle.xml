@@ -12,9 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/dataBase" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/clothes" />
-            <option value="$PROJECT_DIR$/features/clothes/ui" />
-            <option value="$PROJECT_DIR$/features/clothes/ui-logic" />
+            <option value="$PROJECT_DIR$/features/authentication" />
+            <option value="$PROJECT_DIR$/features/authentication/ui" />
+            <option value="$PROJECT_DIR$/features/authentication/ui-logic" />
+            <option value="$PROJECT_DIR$/features/recommendations" />
+            <option value="$PROJECT_DIR$/features/recommendations/ui" />
+            <option value="$PROJECT_DIR$/features/recommendations/ui-logic" />
             <option value="$PROJECT_DIR$/features/weather-main" />
             <option value="$PROJECT_DIR$/features/weather-main/ui" />
             <option value="$PROJECT_DIR$/features/weather-main/ui-logic" />

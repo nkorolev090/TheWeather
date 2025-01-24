@@ -3,7 +3,7 @@ package com.project.features.weather_main
 import com.example.weathercommon.data.RequestResult
 import com.example.weathercommon.data.map
 import com.example.weatherdata.weather.models.Weather
-import com.example.weatherdata.weather.repository.WeatherRepository
+import com.example.weatherdata.weather.WeatherRepository
 import com.project.features.weather_main.models.WeatherUI
 import com.project.features.weather_main.models.toWeatherUI
 import kotlinx.coroutines.flow.Flow

@@ -84,7 +84,7 @@ private fun ParameterView(
 ) {
     Box(
         modifier = modifier
-            .background(Color.Transparent, RoundedCornerShape(CORNER_RADIUS))
+            .background(Color.Transparent, RoundedCornerShape(CORNER_RADIUS.dp))
             .height(IntrinsicSize.Min)
     ) {
         Image(
@@ -93,7 +93,7 @@ private fun ParameterView(
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxSize()
-                .clip(RoundedCornerShape(CORNER_RADIUS))
+                .clip(RoundedCornerShape(CORNER_RADIUS.dp))
         )
         Text(
             text = parameter.toAnnotatedString(),
@@ -189,7 +189,7 @@ private fun WeatherParameterUI.toBackgroundId(): Int =
         is WeatherParameterUI.WindSpeed -> R.drawable.gradient2
     }
 
-private val CORNER_RADIUS = 30.dp
+private const val CORNER_RADIUS = 30
 
 private val parameters = listOf(
     WeatherParameterUI.Humidity("20%","влажность"),

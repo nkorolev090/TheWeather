@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pickedUpForYou">Подобрали для вас:</string>
+    <string name="officialStyle">Официальный</string>
+    <string name="sportStyle">Спортивный</string>
+</resources>

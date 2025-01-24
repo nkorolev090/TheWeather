@@ -2,20 +2,20 @@ package com.example.weatherdata.clothes
 
 import com.example.clothesdb.models.TempModeDBO
 import com.example.clothesdb.models.enums.MainEnumDBO
-import com.example.firebaseapi.clothes.models.ClothesDTO
-import com.example.firebaseapi.clothes.models.ClothesTypeDTO
-import com.example.firebaseapi.clothes.models.TempModeDTO
-import com.example.weatherdata.clothes.models.enums.ClothesSubTypeEnum
-import com.example.weatherdata.clothes.models.enums.ClothesTypeEnum
-import com.example.firebaseapi.clothes.models.enums.MainEnumDTO
-import com.example.firebaseapi.clothes.models.enums.MainTypeEnumDTO
 import com.example.firebaseapi.clothes.models.enums.StyleEnum
-import com.example.firebaseapi.clothes.models.enums.StyleEnumDTO
-import com.example.firebaseapi.clothes.models.enums.SubTypeEnumDTO
+import com.example.firebaseapi.recommendations.clothes.models.ClothesDTO
+import com.example.firebaseapi.recommendations.clothes.models.ClothesTypeDTO
+import com.example.firebaseapi.recommendations.models.TempModeDTO
+import com.example.firebaseapi.recommendations.models.MainEnumDTO
+import com.example.firebaseapi.recommendations.clothes.models.enums.MainTypeEnumDTO
+import com.example.firebaseapi.recommendations.clothes.models.enums.StyleEnumDTO
+import com.example.firebaseapi.recommendations.clothes.models.enums.SubTypeEnumDTO
 import com.example.weatherdata.clothes.models.Clothes
 import com.example.weatherdata.clothes.models.ClothesStyle
 import com.example.weatherdata.clothes.models.ClothesType
 import com.example.weatherdata.clothes.models.TempMode
+import com.example.weatherdata.clothes.models.enums.ClothesSubTypeEnum
+import com.example.weatherdata.clothes.models.enums.ClothesTypeEnum
 import com.example.weatherdata.weather.models.MainEnum
 
 //region DATA TO DTO

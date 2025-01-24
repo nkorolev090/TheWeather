@@ -17,6 +17,7 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = BlueGray200,
     onTertiary = Gray400,
     onSurface = Yellow300,
+    onSurfaceVariant = Purple300,
 //endregion
 
     inverseOnSurface = LightBlack200,

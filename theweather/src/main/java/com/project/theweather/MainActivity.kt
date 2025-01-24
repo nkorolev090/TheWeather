@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.example.authentication.ui.SignInScreen
 import com.project.uikit.TheWeatherTheme
 import com.project.features.weather_main.WeatherMainScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TheWeatherTheme {
-                WeatherMainScreen()
+                //WeatherMainScreen()
+                SignInScreen()
             }
         }
     }
